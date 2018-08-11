@@ -1,0 +1,597 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F4C5D68E-7268-4178-8D0F-0E25BA52A71C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>SMARTtBR_UI.My.MyApplication</StartupObject>
+    <RootNamespace>SMARTtBR_UI</RootNamespace>
+    <AssemblyName>SMARTtBR</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionStrict>Off</OptionStrict>
+    <OptionInfer>On</OptionInfer>
+    <ApplicationIcon>Resources\FIN.ico</ApplicationIcon>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <ManifestCertificateThumbprint>B7E6E39DFE474132DDC3F14F166AA6D89B8160D5</ManifestCertificateThumbprint>
+    <ManifestKeyFile>SMARTBiZ_UI_TemporaryKey.pfx</ManifestKeyFile>
+    <GenerateManifests>true</GenerateManifests>
+    <SignManifests>false</SignManifests>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkProfile />
+    <PublishUrl>D:\AROMA\SMARTCrM\SetUp\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationVersion>2.1.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <BootstrapperComponentsLocation>Relative</BootstrapperComponentsLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>..\ExeDLL\</OutputPath>
+    <DocumentationFile>SMARTtBR.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>..\ExeDLL\</OutputPath>
+    <DocumentationFile>SMARTtBR.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Enterprise.Framework, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Enterprise.InfoStore, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Shared, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\ExeDLL\Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Services, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Windows\assembly\GAC_MSIL\System.Web.Services\2.0.0.0__b03f5f7f11d50a3a\System.Web.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="FORMS\AccBalanceSheetReport_Frm.Designer.vb">
+      <DependentUpon>AccBalanceSheetReport_Frm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\AccBalanceSheetReport_Frm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\AccDayBookReport_Frm.Designer.vb">
+      <DependentUpon>AccDayBookReport_Frm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\AccDayBookReport_Frm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\AccFind_Frm.Designer.vb">
+      <DependentUpon>AccFind_Frm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\AccFind_Frm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\AccountFilter_Frm.Designer.vb">
+      <DependentUpon>AccountFilter_Frm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\AccountFilter_Frm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\AccLedgerReport_Frm.Designer.vb">
+      <DependentUpon>AccLedgerReport_Frm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\AccLedgerReport_Frm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\AccLedger_Frm.Designer.vb">
+      <DependentUpon>AccLedger_Frm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\AccLedger_Frm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\AccOpBal_Frm.Designer.vb">
+      <DependentUpon>AccOpBal_Frm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\AccOpBal_Frm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\AccountMaster_Frm.designer.vb">
+      <DependentUpon>AccountMaster_Frm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\AccountMaster_Frm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\AccPandLReport_Frm.Designer.vb">
+      <DependentUpon>AccPandLReport_Frm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\AccPandLReport_Frm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\AccRandDReport_Frm.Designer.vb">
+      <DependentUpon>AccRandDReport_Frm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\AccRandDReport_Frm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\AccTrialBalanceReport_Frm.Designer.vb">
+      <DependentUpon>AccTrialBalanceReport_Frm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\AccTrialBalanceReport_Frm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\AccYearlyClosing_Frm.Designer.vb">
+      <DependentUpon>AccYearlyClosing_Frm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\AccYearlyClosing_Frm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\Department_Frm.Designer.vb">
+      <DependentUpon>Department_Frm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\Department_Frm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\Designation_Frm.Designer.vb">
+      <DependentUpon>Designation_Frm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\Designation_Frm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\Lock_Frm.designer.vb">
+      <DependentUpon>Lock_Frm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\Lock_Frm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\Login_Frm.designer.vb">
+      <DependentUpon>Login_Frm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\Login_Frm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\ParaCode_Frm.designer.vb">
+      <DependentUpon>ParaCode_Frm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\ParaCode_Frm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\ReportViewerFrm.designer.vb">
+      <DependentUpon>ReportViewerFrm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\ReportViewerFrm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\Search_Frm.designer.vb">
+      <DependentUpon>Search_Frm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\Search_Frm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\ServerSelection_Frm.Designer.vb">
+      <DependentUpon>ServerSelection_Frm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\ServerSelection_Frm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\FINMaN_MDI.Designer.vb">
+      <DependentUpon>FINMaN_MDI.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\FINMaN_MDI.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\UnitFilter_Frm.Designer.vb">
+      <DependentUpon>UnitFilter_Frm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\UnitFilter_Frm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\UnitMaster_Frm.Designer.vb">
+      <DependentUpon>UnitMaster_Frm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\UnitMaster_Frm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\UserMaster_Frm.Designer.vb">
+      <DependentUpon>UserMaster_Frm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\UserMaster_Frm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\UserPwdChange_Frm.Designer.vb">
+      <DependentUpon>UserPwdChange_Frm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\UserPwdChange_Frm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS\UserRights_Frm.Designer.vb">
+      <DependentUpon>UserRights_Frm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\UserRights_Frm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MODULES\CrystalReport_Mdl.vb" />
+    <Compile Include="MODULES\Export_Mdl.vb" />
+    <Compile Include="MODULES\Import_Mdl.vb" />
+    <Compile Include="MODULES\Pop3.vb" />
+    <Compile Include="MODULES\POP3Message1.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Settings.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="FORMS\AccBalanceSheetReport_Frm.resx">
+      <DependentUpon>AccBalanceSheetReport_Frm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\AccDayBookReport_Frm.resx">
+      <DependentUpon>AccDayBookReport_Frm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\AccFind_Frm.resx">
+      <DependentUpon>AccFind_Frm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\AccountFilter_Frm.resx">
+      <DependentUpon>AccountFilter_Frm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\AccLedgerReport_Frm.resx">
+      <DependentUpon>AccLedgerReport_Frm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\AccLedger_Frm.resx">
+      <DependentUpon>AccLedger_Frm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\AccOpBal_Frm.resx">
+      <DependentUpon>AccOpBal_Frm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\AccountMaster_Frm.resx">
+      <DependentUpon>AccountMaster_Frm.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\AccPandLReport_Frm.resx">
+      <DependentUpon>AccPandLReport_Frm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\AccRandDReport_Frm.resx">
+      <DependentUpon>AccRandDReport_Frm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\AccTrialBalanceReport_Frm.resx">
+      <DependentUpon>AccTrialBalanceReport_Frm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\AccYearlyClosing_Frm.resx">
+      <DependentUpon>AccYearlyClosing_Frm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\Department_Frm.resx">
+      <DependentUpon>Department_Frm.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\Designation_Frm.resx">
+      <DependentUpon>Designation_Frm.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\Lock_Frm.resx">
+      <DependentUpon>Lock_Frm.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\Login_Frm.resx">
+      <DependentUpon>Login_Frm.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\ParaCode_Frm.resx">
+      <DependentUpon>ParaCode_Frm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\ReportViewerFrm.resx">
+      <DependentUpon>ReportViewerFrm.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\Search_Frm.resx">
+      <DependentUpon>Search_Frm.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\ServerSelection_Frm.resx">
+      <DependentUpon>ServerSelection_Frm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\FINMaN_MDI.resx">
+      <DependentUpon>FINMaN_MDI.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\UnitFilter_Frm.resx">
+      <DependentUpon>UnitFilter_Frm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\UnitMaster_Frm.resx">
+      <DependentUpon>UnitMaster_Frm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\UserMaster_Frm.resx">
+      <DependentUpon>UserMaster_Frm.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\UserPwdChange_Frm.resx">
+      <DependentUpon>UserPwdChange_Frm.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\UserRights_Frm.resx">
+      <DependentUpon>UserRights_Frm.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Login.jpg" />
+    <None Include="My Project\app.manifest" />
+    <None Include="Resources\Backgroud.jpg" />
+    <None Include="Resources\FIN.ico" />
+    <None Include="Resources\bino.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="BusinessObjects.CrystalReports.10.5">
+      <Visible>False</Visible>
+      <ProductName>Crystal Reports Basic for Visual Studio 2008 %28x86, x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="CrystalDecisions.CrystalReports.Engine">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.Enterprise.Framework">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.Enterprise.InfoStore">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.ReportSource">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.Shared">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.Windows.Forms">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="stdole">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="CRVIEWERLib">
+      <Guid>{C4847593-972C-11D0-9567-00A0C9273C2A}</Guid>
+      <VersionMajor>8</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Office">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>99</VersionMajor>
+      <VersionMinor>1</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SMARTtBR_BL\SMARTtBR_BL.vbproj">
+      <Project>{2fd06cdc-a44c-449b-8d0d-26c7a67409f6}</Project>
+      <Name>SMARTtBR_BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SMARTtBR_BO\SMARTtBR_BO.vbproj">
+      <Project>{a070750c-4d3e-4b41-baa3-d1d03e3cb2d3}</Project>
+      <Name>SMARTtBR_BO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SMARTtBR_CO\SMARTtBR_CO.vbproj">
+      <Project>{a9edc9e5-7419-4de5-82d4-cf57e8464066}</Project>
+      <Name>SMARTtBR_CO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SMARTtBR_DAL\SMARTtBR_DAL.vbproj">
+      <Project>{cd1f5d14-175a-474e-8909-f6dddfa80e34}</Project>
+      <Name>SMARTtBR_DAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
