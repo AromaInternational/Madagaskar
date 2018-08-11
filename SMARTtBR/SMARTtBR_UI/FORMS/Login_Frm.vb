@@ -26,7 +26,7 @@ Public Class Login_Frm
             M_UserMasterBO = M_UserBL.Locate_DataWithName(Txt_UserName.Text.Trim())
             Tran_Date = Dtp_TranDate.Value.Date
             If M_UserMasterBO.UMName = "" Then
-                If UCase(Txt_UserName.Text.Trim) = "SYSTEM" And Len(Txt_Password.Text.Trim) > 8 Then ' Admin
+                If UCase(Txt_UserName.Text.Trim) = "SYSTEM" And Len(Txt_Password.Text.Trim) > 8 Then
                     If UCase(Txt_Password.Text.Trim.Substring(Len(Txt_Password.Text.Trim) - 5, 5)) = "OASIS" Then
                         User_Name = "SYSTEM"
                         User_Password = "OASIS"
