@@ -1,0 +1,3 @@
+﻿CREATE LOGIN [User_Madagaskar]
+    WITH PASSWORD = N'ujyhopwzTikRvWjhmjpc|WlamsFT7_&#$!~<Ggcllgl!ibOE', SID = 0xA95F9B704849034493CF22D426CC5E5A, DEFAULT_LANGUAGE = [us_english], CHECK_EXPIRATION = ON;
+
