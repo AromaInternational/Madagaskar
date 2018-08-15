@@ -17,10 +17,18 @@ Public Class CommonClass
     Public Declare Function GetTickCount Lib "kernel32" () As Long
     Public Declare Function GetLastInputInfo Lib "User32.dll" (ByRef lii As LASTINPUTINFO) As Boolean
 
+    Public Const BasicMeasureUnitShort As String = "cm"
+    Public Const BasicMeasureUnitLong As String = "Centementer"
+
     Public Structure LASTINPUTINFO
         Public cbSize As Integer
         Public dwTime As Integer
     End Structure
+
+    Public Enum ClientType
+        Supplier = 1
+        Customer = 2
+    End Enum
 
     Dim mOnesArray(8) As String
     Dim mOneTensArray(9) As String
@@ -42,6 +50,12 @@ Public Class CommonClass
     Public Shared Server_Name As String = ""
     Public Shared Data_Base As String = ""
     Public Shared ServerType As String = "L"
+
+    Public Shared Branch_Name As String = ""
+    Public Shared Branch_Code As Integer = 0
+    Public Shared Branch_Phone As String = ""
+    Public Shared Branch_Server As String = ""
+    Public Shared Region_Code As Integer = 0
 
     Public Shared Company_Code As String = ""
     Public Shared Company_Name As String = ""

@@ -230,6 +230,12 @@
     <Compile Include="FORMS\ParaCode_Frm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FORMS\PurchaseMaster_Frm.designer.vb">
+      <DependentUpon>PurchaseMaster_Frm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS\PurchaseMaster_Frm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FORMS\ReportViewerFrm.designer.vb">
       <DependentUpon>ReportViewerFrm.vb</DependentUpon>
     </Compile>
@@ -362,6 +368,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FORMS\ParaCode_Frm.resx">
       <DependentUpon>ParaCode_Frm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS\PurchaseMaster_Frm.resx">
+      <DependentUpon>PurchaseMaster_Frm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FORMS\ReportViewerFrm.resx">
       <DependentUpon>ReportViewerFrm.vb</DependentUpon>

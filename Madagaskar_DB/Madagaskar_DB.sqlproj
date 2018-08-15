@@ -426,5 +426,9 @@
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
     </Build>
+    <Build Include="dbo\Tables\ProductMaster_Tbl.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="Madagaskar_DB.refactorlog" />
   </ItemGroup>
 </Project>
