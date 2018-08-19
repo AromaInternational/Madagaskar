@@ -317,8 +317,6 @@ Public Class PurchaseMaster_Frm
             Txt_ClientID.Text = ""
             TxtClientPhone.Text = ""
             TxtClientName.Text = ""
-            Txt_PrdName.Tag = ""
-            Txt_PrdName.Text = ""
             Dtp_BillDate.Value = Tran_Date
             Dtp_BillDate.Enabled = (User_TypeID = 0)
             Dtp_InvDate.Value = Tran_Date
@@ -338,8 +336,8 @@ Public Class PurchaseMaster_Frm
 
             TxtNarration.Text = ""
             ' Txt_Mrp.Text = "0.00"
-            TxtPkgAmt.Text = "0.00"
-            TxtHandlingAmt.Text = "0.00"
+            TxtDiscountOnTotal.Text = "0.00"
+            TxtFrieght.Text = "0.00"
 
             'If PrchRoundOffEdit_Allowed Then
             '    TxtRoundoff.ReadOnly = False
@@ -377,20 +375,18 @@ Public Class PurchaseMaster_Frm
             'If Cmb_DiscOthType.Items.Count > 0 Then CmbDiscQtyType.SelectedIndex = 0
             'Txt_SP.Text = ""
             Txt_PrdCode.Text = ""
-            LblMeasure1.Visible = False
-            TxtMeasure1.Visible = True
+            LblMeasure1.Text = ""
             TxtMeasure1.Text = ""
-            LblMeasure2.Visible = False
-            TxtMeasure2.Visible = True
+            LblMeasure2.Text = ""
             TxtMeasure2.Text = ""
-            LblMeasure3.Visible = False
-            TxtMeasure3.Visible = True
+            LblMeasure3.Text = ""
             TxtMeasure3.Text = ""
-            LblMeasureFinal.Visible = False
-            TxtMeasureFinal.Visible = True
+            LblMeasureFinal.Text = ""
             TxtMeasureFinal.Text = ""
+            TxtMeasureFinal.Tag = ""
+            Txt_PrdName.Tag = ""
             TxtQty.Text = "0.000"
-            TxtRate.Text = ""
+            TxtRate.Text = "0.00"
             'Txt_Mrp.Text = "0.00"
             'Txt_LandingCostPerUnit.Text = "0.00"
             'Txt_BatchNo.Text = ""
@@ -468,17 +464,14 @@ Invalid:
                 MessageBox.Show("Invalid Quantity, Please check..", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 TxtQty.Focus()
                 Exit Function
-
-                'If Cmb_Item.SelectedValue > 0 Then
-                '    M_Dr = M_TranTbl.Select("IT_ItemID=" & Cmb_Item.SelectedValue.ToString)
-
-                '    If Val(Txt_BuyingPrice.Text) <= 0 Then
-                '        MessageBox.Show("Invalid Buying Price, Please check..", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-                '        Txt_BuyingPrice.Focus()
-                '        Exit Function
-                '    End If
-
-
+            ElseIf Val(Txt_PrdCode.Text) <= 0 Then
+                MessageBox.Show("Invalid Product, Please check..", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                TxtQty.Focus()
+                Exit Function
+            ElseIf Val(TxtRate.Text) <= 0 Then
+                MessageBox.Show("Invalid Rate, Please check..", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                TxtQty.Focus()
+                Exit Function
             Else
                 ValidateItem = True
             End If
@@ -505,51 +498,8 @@ Invalid:
             M_Dr("DiscountPercent") = 0
             M_Dr("DiscountAmount") = 0
             M_Dr("Description") = Txt_Description.Text
-            'M_Dr("Pr_Name") = Cmb_Item.Text
-            'M_Dr("SOPItem") = ""
-            'M_Dr("IT_PCID") = 0
-            'M_Dr("IT_IMID") = 0
-            'M_Dr("IT_StkID") = Val(Txt_BatchNo.Tag)
-            'M_Dr("Stk_BatchNo") = Txt_BatchNo.Text
-            'M_Dr("IT_ItemID") = Val(Cmb_Item.SelectedValue)
-            'M_Dr("IT_Qty") = Val(TxtQty.Text)
-            'M_Dr("IT_DiscID") = CmbDiscQtyType.SelectedValue
-            'M_Dr("IT_DiscPer") = Val(TxtDiscQtyPercent.Text)
-            'M_Dr("IT_DiscAmount") = Val(TxtDiscQtyAmt.Text)
-            'M_Dr("IT_TaxID") = CmbTaxType.SelectedValue
-            'M_Dr("IT_TaxPer") = Val(TxtTaxPercent.Text)
-            'M_Dr("IT_TaxAmount") = Val(TxtTaxAmt.Text)
-
-            'M_Dr("IT_CGSTPer") = 0
-            'M_Dr("IT_CGSTAmount") = 0
-            'M_Dr("IT_SGSTPer") = 0
-            'M_Dr("IT_SGSTAmount") = 0
-
-            'M_Dr("IT_UnitPriceWOT") = Val(Txt_BuyingPrice.Text)
-            'M_Dr("IT_UnitPriceWT") = Val(TxtItemGrTot.Text) / Val(TxtQty.Text)
-            'M_Dr("IT_ValueWOT") = Val(TxtTotAmt.Text)
-            'M_Dr("IT_ValueWT") = Val(TxtItemGrTot.Text)
-            'M_Dr("IT_Mrp") = Val(Txt_Mrp.Text)
-            'M_Dr("IT_SP") = Val(Txt_SP.Text)
-            'M_Dr("IT_Nraation") = Txt_Description.Text.Trim
-            'M_Dr("Stk_MFDate") = CDate(Dtp_ManufacturingDate.Value)
-            'M_Dr("Stk_EXPDate") = CDate(Dtp_ExpiryDate.Value)
-            'M_Dr("Stk_PRate") = Val(Txt_BuyingPrice.Text)
-            'M_Dr("Active_Status") = "Y"
-
-            'M_Dr("Stk_QtyPerUnit") = 0
-            'M_Dr("Stk_LandingCost") = Val(Txt_LandingCostPerUnit.Text)
-            'M_Dr("Stk_IMDate") = "01/01/1900"
-            'M_Dr("Stk_ITSlNo") = 0
-            'M_Dr("Stk_IMID") = 0
-            'M_Dr("DT_Type") = ""
-            'M_Dr("DT_Name") = ""
-            'M_Dr("DT_Group") = ""
-            'M_Dr("Typ_Name") = ""
-            'M_Dr("Typ_StockFactor") = 0
-            'M_Dr("Unit_ID") = 0
-
-
+            M_Dr("MeasurementFinal_Value") = Val(Replace(TxtMeasureFinal.Text, BasicMeasureUnitShort, ""))
+      
             M_TranTbl.Rows.Add(M_Dr)
 
             Call GridBind()
@@ -575,7 +525,7 @@ Invalid:
 
             Dgv_TranDetails.DataSource = M_TranTbl
             Dgv_TranDetails.Columns(Col).Visible = True
-            'Dgv_TranDetails.AutoResizeRow = DataGridViewAutoSizeRowMode.AllCells
+
             For Col = 0 To Dgv_TranDetails.Columns.Count - 1
                 DgCol = Dgv_TranDetails.Columns(Col)
                 If DgCol.Name = "ProductName_Detailed" Then
@@ -604,9 +554,12 @@ Invalid:
                     DgCol.DefaultCellStyle.Format = "n2"
                 ElseIf DgCol.Name = "DiscountType" Then
                     DgCol.HeaderText = "Discount Type"
-                    DgCol.Width = 110
+                    DgCol.Width = 80
                 ElseIf DgCol.Name = "DiscountPercent" Then
-                    DgCol.HeaderText = "Discount%"
+                    DgCol.HeaderText = "Disc%"
+                    DgCol.Width = 40
+                ElseIf DgCol.Name = "MeasurementFinal_Value" Then
+                    DgCol.HeaderText = "CBcm"
                     DgCol.Width = 80
                 ElseIf DgCol.Name = "TranSeqNo" Then
                     DgCol.HeaderText = "Sl No"
@@ -643,6 +596,7 @@ Invalid:
         Dim Roundoff As Double
         Dim NetTot As Double
         Dim TotQty As Double = 0
+        Dim TotalValue As Double = 0
         Try
             'TxtGrTotWOT.Text = "0.00"
             'TxtGrDisc.Text = "0.00"
@@ -651,19 +605,14 @@ Invalid:
             'TxtGrTotWT.Text = "0.00"
 
             If M_TranTbl.Rows.Count > 0 Then
-                objSum = M_TranTbl.Compute("Sum(IT_ValueWOT)", "")
-                'TxtGrTotWOT.Text = Format(Val(objSum.ToString()), "#0.00")
-                objSum = M_TranTbl.Compute("Sum(IT_DiscAmount)", "")
-                'TxtGrDisc.Text = Format(Val(objSum.ToString()), "#0.00")
-                objSum = M_TranTbl.Compute("Sum(IT_TaxAmount)", "")
-                'TxtGrTax.Text = Format(Val(objSum.ToString()), "#0.00")
-                objSum = M_TranTbl.Compute("Sum(IT_ValueWT)", "")
-                'TxtGrTotWT.Text = Format(Val(objSum.ToString()), "#0.00")
-                objSum = M_TranTbl.Compute("Sum(IT_Qty)", "")
+                objSum = M_TranTbl.Compute("Sum(Price)", "")
+                TotalValue = Val(objSum.ToString())
+                objSum = M_TranTbl.Compute("Sum(Quantity)", "")
                 TotQty = Val(objSum.ToString())
             End If
 
             Txt_TotalQty.Text = Format(TotQty, "#0.000")
+            Txt_TotalValue.Text = Format(TotalValue, "#0.00")
 
             'DiscPercent = Val(TxtDiscOthPercent.Text)
             'If Get_CalcType(Cmb_DiscOthType.DataSource, IIf(Cmb_DiscOthType.SelectedIndex >= 0, Cmb_DiscOthType.SelectedValue, 0)) = "V" Then
@@ -671,12 +620,11 @@ Invalid:
             'Else
             '    DiscAmt = DiscPercent
             'End If
-            Txt_TotalValue.Text = Format(DiscAmt, "#0.00")
 
-            'GrTot = Val(TxtGrTotWOT.Text) - Val(TxtDiscOthAmt.Text) + Val(TxtPkgAmt.Text) + Val(TxtHandlingAmt.Text)
-            'TxtGrTot.Text = Format(GrTot, "#0.00")
+            GrTot = Val(Txt_TotalValue.Text) - Val(TxtDiscountOnTotal.Text) + Val(TxtFrieght.Text)
+            TxtGrTot.Text = Format(GrTot, "#0.00")
 
-            'NetTot = Val(TxtGrTot.Text) + Val(TxtGrTax.Text)
+            NetTot = GrTot
 
             If Chk_AutoRoundOff.Checked Then
                 Roundoff = CDbl(Microsoft.VisualBasic.Right(Format(NetTot, "#0.00"), 3))
@@ -699,12 +647,12 @@ Invalid:
 
     Private Sub TxtQty_Validating(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles TxtQty.Validating
         TxtQty.Text = Format(Val(TxtQty.Text), "#0.000")
-        'Call CalcItemTot()
+        Call CalcItemTot()
     End Sub
 
     Public Sub CalcItemTot(Optional ByVal SP As Double = 0)
         Dim Qty As Double = 0
-        Dim BP As Double = 0 ' Buying Price
+        Dim Rate As Double = 0 ' Buying Price
         Dim TotalAmt As Double = 0
         Dim DiscPercent As Double = 0
         Dim DiscAmt As Double = 0
@@ -713,10 +661,22 @@ Invalid:
         Dim TotWithTax As Double = 0
         Dim ProfitPercent As Double = 0
         Dim LandingCost As Double = 0
+        Dim CBcm As Double = 0
+        Dim CBcmItemlTotal As Double = 0
 
         Try
             Qty = Val(TxtQty.Text)
-            BP = Val(TxtRate.Text)
+            Rate = Val(TxtRate.Text)
+            TotalAmt = Qty * Rate
+
+            TxtQty.Text = Format(Qty, "#0.000")
+            TxtRate.Text = Format(Rate, "#0.00")
+
+            CBcm = Val(TxtMeasureFinal.Tag)
+            CBcmItemlTotal = CBcm * Qty
+
+            TxtMeasureFinal.Text = Format(CBcmItemlTotal, "#0.00") + BasicMeasureUnitShort
+
             'ProfitPercent = Val(Txt_ProfitPerc.Text)
 
             'If Val(Txt_SP.Text) = 0 Then
@@ -748,7 +708,7 @@ Invalid:
             '        End If
             'End Select
 
-            'TxtTotAmt.Text = Format(TotalAmt, "#0.00")
+            TxtPrice.Text = Format(TotalAmt, "#0.00")
 
             'TxtTaxAmt.Text = Format(TaxAmt, "#0.00")
 
@@ -1091,7 +1051,7 @@ Invalid:
     End Sub
 
     Private Sub Txt_BuyingPrice_Validating(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles TxtRate.Validating
-        'Call CalcItemTot()
+        Call CalcItemTot()
     End Sub
 
     Private Sub Dtp_ManufacturingDate_Validating(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs)
@@ -1142,12 +1102,16 @@ Invalid:
 
     Public Sub Load_CustDtls(ByVal M_ID As Integer, ByVal M_PhNo As String)
         Try
+
             M_ClientBO = M_ClientBL.Locate_Data(Company_Code, M_ID, M_PhNo, M_ClientType)
             Txt_ClientID.Text = M_ClientBO.CMID
             TxtClientName.Text = M_ClientBO.CMName
             TxtClientPhone.Text = M_ClientBO.CMPhoneNo
             M_CMAccCode = M_ClientBO.CMAccCode
             M_CMCreditEnabled = M_ClientBO.CMCreditEnabled
+            ' To do
+            TxtBillingAddress.Text = M_ClientBO.CMPrAdrs1 + ", " + M_ClientBO.CMPrAdrs2 + ", " + M_ClientBO.CMPrAdrs3
+            TxtShippingAddress.Text = M_ClientBO.CMPmAdrs1 + ", " + M_ClientBO.CMPmAdrs2 + ", " + M_ClientBO.CMPmAdrs3
         Catch ex As Exception
         End Try
     End Sub
@@ -1314,20 +1278,19 @@ Invalid:
 
     Private Sub Txt_PrdCode_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles Txt_PrdCode.Validating
         Try
+            LblMeasure1.Text = ""
+            TxtMeasure1.Text = ""
+            LblMeasure2.Text = ""
+            TxtMeasure2.Text = ""
+            LblMeasure3.Text = ""
+            TxtMeasure3.Text = ""
+            LblMeasureFinal.Text = ""
+            TxtMeasureFinal.Text = ""
+            Txt_PrdName.Tag = ""
+            TxtMeasureFinal.Tag = ""
+
             If Val(Txt_PrdCode.Text) = 0 Then
                 Txt_PrdCode.Text = ""
-                LblMeasure1.Visible = False
-                TxtMeasure1.Visible = True
-                TxtMeasure1.Text = ""
-                LblMeasure2.Visible = False
-                TxtMeasure2.Visible = True
-                TxtMeasure2.Text = ""
-                LblMeasure3.Visible = False
-                TxtMeasure3.Visible = True
-                TxtMeasure3.Text = ""
-                LblMeasureFinal.Visible = False
-                TxtMeasureFinal.Visible = True
-                TxtMeasureFinal.Text = ""
             Else
                 Call Load_ProductDetails(Val(Txt_PrdCode.Text))
                 If Txt_PrdName.Text.Length = 0 And Val(Txt_PrdCode.Text) <> 0 Then
@@ -1336,51 +1299,47 @@ Invalid:
                 End If
             End If
 
-
-            If M_ProductBO.Measurement1Text.Length = 0 Then
-                LblMeasure1.Visible = False
-                TxtMeasure1.Visible = False
-            Else
-                LblMeasure1.Visible = True
-                TxtMeasure1.Visible = True
+            If M_ProductBO.Measurement1Text.Length > 0 Then
                 LblMeasure1.Text = M_ProductBO.Measurement1Text
                 TxtMeasure1.Text = M_ProductBO.Measurement1Value.ToString() & " " & BasicMeasureUnitShort
             End If
 
-            If M_ProductBO.Measurement2Text.Length = 0 Then
-                LblMeasure2.Visible = False
-                TxtMeasure2.Visible = False
-            Else
-                LblMeasure2.Visible = True
-                TxtMeasure2.Visible = True
+            If M_ProductBO.Measurement2Text.Length > 0 Then
                 LblMeasure2.Text = M_ProductBO.Measurement2Text
                 TxtMeasure2.Text = M_ProductBO.Measurement2Value.ToString() & " " & BasicMeasureUnitShort
             End If
 
-            If M_ProductBO.Measurement3Text.Length = 0 Then
-                LblMeasure3.Visible = False
-                TxtMeasure3.Visible = False
-            Else
-                LblMeasure3.Visible = True
-                TxtMeasure3.Visible = True
+            If M_ProductBO.Measurement3Text.Length > 0 Then
                 LblMeasure3.Text = M_ProductBO.Measurement3Text
                 TxtMeasure3.Text = M_ProductBO.Measurement3Value.ToString() & " " & BasicMeasureUnitShort
             End If
 
-            If M_ProductBO.MeasurementFinalText.Length = 0 Then
-                LblMeasureFinal.Visible = False
-                TxtMeasureFinal.Visible = False
-            Else
-                LblMeasureFinal.Visible = True
-                TxtMeasureFinal.Visible = True
+            If M_ProductBO.MeasurementFinalText.Length > 0 Then
                 LblMeasureFinal.Text = M_ProductBO.MeasurementFinalText
-                TxtMeasureFinal.Text = ""
+                TxtMeasureFinal.Tag = M_ProductBO.MeasurementFinalValue
             End If
 
             Txt_PrdName.Tag = M_ProductBO.ProductNameDetailed
 
         Catch ex As Exception
         End Try
+    End Sub
+
+
+    Private Sub TxtDiscountOnTotal_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles TxtDiscountOnTotal.Validating
+        CalcFinalTotal()
+    End Sub
+
+    Private Sub TxtFrieght_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles TxtFrieght.Validating
+        CalcFinalTotal()
+    End Sub
+
+    Private Sub Chk_AutoRoundOff_Click(sender As Object, e As EventArgs) Handles Chk_AutoRoundOff.Click
+        CalcFinalTotal()
+    End Sub
+
+    Private Sub TxtRoundoff_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs)
+        CalcFinalTotal()
     End Sub
 End Class
 

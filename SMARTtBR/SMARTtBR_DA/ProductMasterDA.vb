@@ -61,6 +61,7 @@ Public Class ProductMasterDA
                     .Measurement1Value = M_Dt.Rows(0).Item("Measurement1_Value")
                     .Measurement2Value = M_Dt.Rows(0).Item("Measurement2_Value")
                     .Measurement3Value = M_Dt.Rows(0).Item("Measurement3_Value")
+                    .MeasurementFinalValue = M_Dt.Rows(0).Item("MeasurementFinal_Value")
                     .ProductName = M_Dt.Rows(0).Item("ProductName")
                     .ProductNameDetailed = M_Dt.Rows(0).Item("ProductName_Detailed")
                     .ProductCategory = M_Dt.Rows(0).Item("ProductCategory")

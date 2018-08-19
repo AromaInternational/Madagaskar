@@ -22,7 +22,7 @@ Partial Class PurchaseMaster_Frm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(PurchaseMaster_Frm))
         Me.Dgv_TranDetails = New System.Windows.Forms.DataGridView()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -35,15 +35,14 @@ Partial Class PurchaseMaster_Frm
         Me.TxtClientName = New System.Windows.Forms.TextBox()
         Me.Label21 = New System.Windows.Forms.Label()
         Me.Label20 = New System.Windows.Forms.Label()
-        Me.TxtHandlingAmt = New System.Windows.Forms.TextBox()
+        Me.TxtFrieght = New System.Windows.Forms.TextBox()
         Me.Label34 = New System.Windows.Forms.Label()
-        Me.TxtPkgAmt = New System.Windows.Forms.TextBox()
+        Me.TxtDiscountOnTotal = New System.Windows.Forms.TextBox()
         Me.Label33 = New System.Windows.Forms.Label()
         Me.TxtGrTot = New System.Windows.Forms.TextBox()
         Me.Label31 = New System.Windows.Forms.Label()
         Me.TxtNetAmt = New System.Windows.Forms.TextBox()
         Me.Label30 = New System.Windows.Forms.Label()
-        Me.TxtRoundoff = New System.Windows.Forms.TextBox()
         Me.Label29 = New System.Windows.Forms.Label()
         Me.Txt_TotalValue = New System.Windows.Forms.TextBox()
         Me.Label27 = New System.Windows.Forms.Label()
@@ -95,6 +94,11 @@ Partial Class PurchaseMaster_Frm
         Me.Txt_Description = New System.Windows.Forms.TextBox()
         Me.Label47 = New System.Windows.Forms.Label()
         Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.Panel8 = New System.Windows.Forms.Panel()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.TxtShippingAddress = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.TxtBillingAddress = New System.Windows.Forms.TextBox()
         CType(Me.Dgv_TranDetails, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -103,27 +107,29 @@ Partial Class PurchaseMaster_Frm
         Me.Panel6.SuspendLayout()
         Me.Panel7.SuspendLayout()
         Me.Panel4.SuspendLayout()
+        Me.Panel8.SuspendLayout()
         Me.SuspendLayout()
         '
         'Dgv_TranDetails
         '
         Me.Dgv_TranDetails.AllowUserToAddRows = False
         Me.Dgv_TranDetails.AllowUserToDeleteRows = False
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Bisque
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.Desktop
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Dgv_TranDetails.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        Me.Dgv_TranDetails.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Bisque
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.Desktop
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Dgv_TranDetails.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
         Me.Dgv_TranDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.Dgv_TranDetails.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
-        Me.Dgv_TranDetails.Location = New System.Drawing.Point(2, 159)
+        Me.Dgv_TranDetails.Location = New System.Drawing.Point(2, 202)
         Me.Dgv_TranDetails.Name = "Dgv_TranDetails"
         Me.Dgv_TranDetails.RowHeadersWidth = 5
         Me.Dgv_TranDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.Dgv_TranDetails.Size = New System.Drawing.Size(890, 232)
+        Me.Dgv_TranDetails.Size = New System.Drawing.Size(890, 185)
         Me.Dgv_TranDetails.TabIndex = 32
         '
         'Label3
@@ -150,7 +156,7 @@ Partial Class PurchaseMaster_Frm
         Me.TxtNarration.Location = New System.Drawing.Point(165, 17)
         Me.TxtNarration.Name = "TxtNarration"
         Me.TxtNarration.Size = New System.Drawing.Size(721, 22)
-        Me.TxtNarration.TabIndex = 12
+        Me.TxtNarration.TabIndex = 45
         '
         'LblNew
         '
@@ -219,14 +225,14 @@ Partial Class PurchaseMaster_Frm
         Me.Label20.TabIndex = 74
         Me.Label20.Text = "Name"
         '
-        'TxtHandlingAmt
+        'TxtFrieght
         '
-        Me.TxtHandlingAmt.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtHandlingAmt.Location = New System.Drawing.Point(183, 16)
-        Me.TxtHandlingAmt.Name = "TxtHandlingAmt"
-        Me.TxtHandlingAmt.Size = New System.Drawing.Size(178, 21)
-        Me.TxtHandlingAmt.TabIndex = 41
-        Me.TxtHandlingAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.TxtFrieght.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtFrieght.Location = New System.Drawing.Point(183, 16)
+        Me.TxtFrieght.Name = "TxtFrieght"
+        Me.TxtFrieght.Size = New System.Drawing.Size(178, 21)
+        Me.TxtFrieght.TabIndex = 41
+        Me.TxtFrieght.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label34
         '
@@ -234,18 +240,18 @@ Partial Class PurchaseMaster_Frm
         Me.Label34.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label34.Location = New System.Drawing.Point(182, 1)
         Me.Label34.Name = "Label34"
-        Me.Label34.Size = New System.Drawing.Size(85, 13)
+        Me.Label34.Size = New System.Drawing.Size(47, 13)
         Me.Label34.TabIndex = 97
-        Me.Label34.Text = "Handling Chrg"
+        Me.Label34.Text = "Frieght"
         '
-        'TxtPkgAmt
+        'TxtDiscountOnTotal
         '
-        Me.TxtPkgAmt.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtPkgAmt.Location = New System.Drawing.Point(3, 16)
-        Me.TxtPkgAmt.Name = "TxtPkgAmt"
-        Me.TxtPkgAmt.Size = New System.Drawing.Size(178, 21)
-        Me.TxtPkgAmt.TabIndex = 40
-        Me.TxtPkgAmt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.TxtDiscountOnTotal.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtDiscountOnTotal.Location = New System.Drawing.Point(3, 16)
+        Me.TxtDiscountOnTotal.Name = "TxtDiscountOnTotal"
+        Me.TxtDiscountOnTotal.Size = New System.Drawing.Size(178, 21)
+        Me.TxtDiscountOnTotal.TabIndex = 40
+        Me.TxtDiscountOnTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label33
         '
@@ -253,9 +259,9 @@ Partial Class PurchaseMaster_Frm
         Me.Label33.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label33.Location = New System.Drawing.Point(0, 1)
         Me.Label33.Name = "Label33"
-        Me.Label33.Size = New System.Drawing.Size(63, 13)
+        Me.Label33.Size = New System.Drawing.Size(106, 13)
         Me.Label33.TabIndex = 95
-        Me.Label33.Text = "Pack Chrg"
+        Me.Label33.Text = "Discount On Total"
         '
         'TxtGrTot
         '
@@ -302,16 +308,6 @@ Partial Class PurchaseMaster_Frm
         Me.Label30.Size = New System.Drawing.Size(85, 16)
         Me.Label30.TabIndex = 91
         Me.Label30.Text = "Net Amount"
-        '
-        'TxtRoundoff
-        '
-        Me.TxtRoundoff.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtRoundoff.Location = New System.Drawing.Point(542, 16)
-        Me.TxtRoundoff.Name = "TxtRoundoff"
-        Me.TxtRoundoff.Size = New System.Drawing.Size(164, 21)
-        Me.TxtRoundoff.TabIndex = 43
-        Me.TxtRoundoff.TabStop = False
-        Me.TxtRoundoff.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label29
         '
@@ -514,10 +510,10 @@ Partial Class PurchaseMaster_Frm
         Me.Panel3.Controls.Add(Me.Label7)
         Me.Panel3.Controls.Add(Me.TxtMeasure1)
         Me.Panel3.Controls.Add(Me.LblMeasure1)
-        Me.Panel3.Location = New System.Drawing.Point(1, 72)
+        Me.Panel3.Location = New System.Drawing.Point(1, 116)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(891, 41)
-        Me.Panel3.TabIndex = 12
+        Me.Panel3.TabIndex = 2
         '
         'Cmd_Prd_Search
         '
@@ -634,7 +630,7 @@ Partial Class PurchaseMaster_Frm
         Me.Txt_PrdCode.Location = New System.Drawing.Point(3, 15)
         Me.Txt_PrdCode.Name = "Txt_PrdCode"
         Me.Txt_PrdCode.Size = New System.Drawing.Size(61, 22)
-        Me.Txt_PrdCode.TabIndex = 7
+        Me.Txt_PrdCode.TabIndex = 9
         Me.Txt_PrdCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label4
@@ -653,7 +649,7 @@ Partial Class PurchaseMaster_Frm
         Me.TxtRate.Location = New System.Drawing.Point(614, 15)
         Me.TxtRate.Name = "TxtRate"
         Me.TxtRate.Size = New System.Drawing.Size(83, 22)
-        Me.TxtRate.TabIndex = 9
+        Me.TxtRate.TabIndex = 11
         Me.TxtRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label16
@@ -672,7 +668,7 @@ Partial Class PurchaseMaster_Frm
         Me.TxtQty.Location = New System.Drawing.Point(531, 15)
         Me.TxtQty.Name = "TxtQty"
         Me.TxtQty.Size = New System.Drawing.Size(81, 22)
-        Me.TxtQty.TabIndex = 8
+        Me.TxtQty.TabIndex = 10
         Me.TxtQty.Text = "0.000"
         Me.TxtQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -709,7 +705,7 @@ Partial Class PurchaseMaster_Frm
         Me.Cmd_Add.Location = New System.Drawing.Point(832, 0)
         Me.Cmd_Add.Name = "Cmd_Add"
         Me.Cmd_Add.Size = New System.Drawing.Size(56, 41)
-        Me.Cmd_Add.TabIndex = 11
+        Me.Cmd_Add.TabIndex = 13
         Me.Cmd_Add.Text = "Add"
         Me.Cmd_Add.UseVisualStyleBackColor = True
         '
@@ -768,7 +764,7 @@ Partial Class PurchaseMaster_Frm
         Me.Panel5.Location = New System.Drawing.Point(1, 475)
         Me.Panel5.Name = "Panel5"
         Me.Panel5.Size = New System.Drawing.Size(891, 44)
-        Me.Panel5.TabIndex = 8
+        Me.Panel5.TabIndex = 5
         Me.Panel5.TabStop = True
         '
         'Panel6
@@ -813,17 +809,16 @@ Partial Class PurchaseMaster_Frm
         Me.Panel7.Controls.Add(Me.TxtNetAmt)
         Me.Panel7.Controls.Add(Me.TxtGrTot)
         Me.Panel7.Controls.Add(Me.Label30)
-        Me.Panel7.Controls.Add(Me.TxtHandlingAmt)
+        Me.Panel7.Controls.Add(Me.TxtFrieght)
         Me.Panel7.Controls.Add(Me.Label29)
-        Me.Panel7.Controls.Add(Me.TxtRoundoff)
         Me.Panel7.Controls.Add(Me.Label31)
         Me.Panel7.Controls.Add(Me.Label33)
         Me.Panel7.Controls.Add(Me.Label34)
-        Me.Panel7.Controls.Add(Me.TxtPkgAmt)
+        Me.Panel7.Controls.Add(Me.TxtDiscountOnTotal)
         Me.Panel7.Location = New System.Drawing.Point(2, 434)
         Me.Panel7.Name = "Panel7"
         Me.Panel7.Size = New System.Drawing.Size(890, 40)
-        Me.Panel7.TabIndex = 40
+        Me.Panel7.TabIndex = 4
         '
         'Chk_AutoRoundOff
         '
@@ -842,7 +837,7 @@ Partial Class PurchaseMaster_Frm
         Me.Txt_Description.MaxLength = 250
         Me.Txt_Description.Name = "Txt_Description"
         Me.Txt_Description.Size = New System.Drawing.Size(826, 22)
-        Me.Txt_Description.TabIndex = 10
+        Me.Txt_Description.TabIndex = 12
         '
         'Label47
         '
@@ -861,10 +856,59 @@ Partial Class PurchaseMaster_Frm
         Me.Panel4.Controls.Add(Me.Cmd_Add)
         Me.Panel4.Controls.Add(Me.Label47)
         Me.Panel4.Controls.Add(Me.Txt_Description)
-        Me.Panel4.Location = New System.Drawing.Point(1, 114)
+        Me.Panel4.Location = New System.Drawing.Point(1, 158)
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Size = New System.Drawing.Size(891, 43)
-        Me.Panel4.TabIndex = 504
+        Me.Panel4.TabIndex = 3
+        '
+        'Panel8
+        '
+        Me.Panel8.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.Panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel8.Controls.Add(Me.Label6)
+        Me.Panel8.Controls.Add(Me.TxtShippingAddress)
+        Me.Panel8.Controls.Add(Me.Label5)
+        Me.Panel8.Controls.Add(Me.TxtBillingAddress)
+        Me.Panel8.Location = New System.Drawing.Point(1, 71)
+        Me.Panel8.Name = "Panel8"
+        Me.Panel8.Size = New System.Drawing.Size(891, 43)
+        Me.Panel8.TabIndex = 1
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(445, 2)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(104, 13)
+        Me.Label6.TabIndex = 544
+        Me.Label6.Text = "Shipping Address"
+        '
+        'TxtShippingAddress
+        '
+        Me.TxtShippingAddress.Location = New System.Drawing.Point(448, 16)
+        Me.TxtShippingAddress.MaxLength = 250
+        Me.TxtShippingAddress.Name = "TxtShippingAddress"
+        Me.TxtShippingAddress.Size = New System.Drawing.Size(438, 22)
+        Me.TxtShippingAddress.TabIndex = 8
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(4, 2)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(89, 13)
+        Me.Label5.TabIndex = 542
+        Me.Label5.Text = "Billing Address"
+        '
+        'TxtBillingAddress
+        '
+        Me.TxtBillingAddress.Location = New System.Drawing.Point(4, 16)
+        Me.TxtBillingAddress.MaxLength = 250
+        Me.TxtBillingAddress.Name = "TxtBillingAddress"
+        Me.TxtBillingAddress.Size = New System.Drawing.Size(437, 22)
+        Me.TxtBillingAddress.TabIndex = 7
         '
         'PurchaseMaster_Frm
         '
@@ -874,6 +918,7 @@ Partial Class PurchaseMaster_Frm
         Me.BackgroundImage = Global.SMARTtBR_UI.My.Resources.Resources.Backgroud
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(895, 558)
+        Me.Controls.Add(Me.Panel8)
         Me.Controls.Add(Me.Panel4)
         Me.Controls.Add(Me.Panel7)
         Me.Controls.Add(Me.Panel6)
@@ -912,6 +957,8 @@ Partial Class PurchaseMaster_Frm
         Me.Panel7.PerformLayout()
         Me.Panel4.ResumeLayout(False)
         Me.Panel4.PerformLayout()
+        Me.Panel8.ResumeLayout(False)
+        Me.Panel8.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -929,15 +976,14 @@ Partial Class PurchaseMaster_Frm
     Friend WithEvents Label27 As System.Windows.Forms.Label
     Friend WithEvents TxtNetAmt As System.Windows.Forms.TextBox
     Friend WithEvents Label30 As System.Windows.Forms.Label
-    Friend WithEvents TxtRoundoff As System.Windows.Forms.TextBox
     Friend WithEvents Label29 As System.Windows.Forms.Label
     Friend WithEvents TxtGrTot As System.Windows.Forms.TextBox
     Friend WithEvents Label31 As System.Windows.Forms.Label
     Friend WithEvents Txt_ClientID As System.Windows.Forms.TextBox
     Friend WithEvents Label32 As System.Windows.Forms.Label
-    Friend WithEvents TxtHandlingAmt As System.Windows.Forms.TextBox
+    Friend WithEvents TxtFrieght As System.Windows.Forms.TextBox
     Friend WithEvents Label34 As System.Windows.Forms.Label
-    Friend WithEvents TxtPkgAmt As System.Windows.Forms.TextBox
+    Friend WithEvents TxtDiscountOnTotal As System.Windows.Forms.TextBox
     Friend WithEvents Label33 As System.Windows.Forms.Label
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
     Friend WithEvents lbl_Heading As System.Windows.Forms.Label
@@ -987,4 +1033,9 @@ Partial Class PurchaseMaster_Frm
     Friend WithEvents LblMeasureFinal As System.Windows.Forms.Label
     Friend WithEvents Cmd_Client_Search As System.Windows.Forms.Button
     Friend WithEvents Cmd_Prd_Search As System.Windows.Forms.Button
+    Friend WithEvents Panel8 As System.Windows.Forms.Panel
+    Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents TxtShippingAddress As System.Windows.Forms.TextBox
+    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents TxtBillingAddress As System.Windows.Forms.TextBox
 End Class
