@@ -22,7 +22,7 @@ Partial Class PurchaseMaster_Frm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(PurchaseMaster_Frm))
         Me.Dgv_TranDetails = New System.Windows.Forms.DataGridView()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -65,7 +65,7 @@ Partial Class PurchaseMaster_Frm
         Me.Cmd_Prd_Search = New System.Windows.Forms.Button()
         Me.TxtMeasureFinal = New System.Windows.Forms.TextBox()
         Me.LblMeasureFinal = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.TxtPrice = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.TxtMeasure3 = New System.Windows.Forms.TextBox()
         Me.LblMeasure3 = New System.Windows.Forms.Label()
@@ -75,7 +75,7 @@ Partial Class PurchaseMaster_Frm
         Me.Txt_PrdName = New System.Windows.Forms.TextBox()
         Me.Txt_PrdCode = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.Txt_BuyingPrice = New System.Windows.Forms.TextBox()
+        Me.TxtRate = New System.Windows.Forms.TextBox()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.TxtQty = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
@@ -109,14 +109,14 @@ Partial Class PurchaseMaster_Frm
         '
         Me.Dgv_TranDetails.AllowUserToAddRows = False
         Me.Dgv_TranDetails.AllowUserToDeleteRows = False
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Bisque
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.Desktop
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Dgv_TranDetails.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Bisque
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.Desktop
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Dgv_TranDetails.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.Dgv_TranDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.Dgv_TranDetails.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.Dgv_TranDetails.Location = New System.Drawing.Point(2, 159)
@@ -150,7 +150,7 @@ Partial Class PurchaseMaster_Frm
         Me.TxtNarration.Location = New System.Drawing.Point(165, 17)
         Me.TxtNarration.Name = "TxtNarration"
         Me.TxtNarration.Size = New System.Drawing.Size(721, 22)
-        Me.TxtNarration.TabIndex = 11
+        Me.TxtNarration.TabIndex = 12
         '
         'LblNew
         '
@@ -498,7 +498,7 @@ Partial Class PurchaseMaster_Frm
         Me.Panel3.Controls.Add(Me.Cmd_Prd_Search)
         Me.Panel3.Controls.Add(Me.TxtMeasureFinal)
         Me.Panel3.Controls.Add(Me.LblMeasureFinal)
-        Me.Panel3.Controls.Add(Me.TextBox1)
+        Me.Panel3.Controls.Add(Me.TxtPrice)
         Me.Panel3.Controls.Add(Me.Label10)
         Me.Panel3.Controls.Add(Me.TxtMeasure3)
         Me.Panel3.Controls.Add(Me.LblMeasure3)
@@ -508,7 +508,7 @@ Partial Class PurchaseMaster_Frm
         Me.Panel3.Controls.Add(Me.Txt_PrdName)
         Me.Panel3.Controls.Add(Me.Txt_PrdCode)
         Me.Panel3.Controls.Add(Me.Label4)
-        Me.Panel3.Controls.Add(Me.Txt_BuyingPrice)
+        Me.Panel3.Controls.Add(Me.TxtRate)
         Me.Panel3.Controls.Add(Me.Label16)
         Me.Panel3.Controls.Add(Me.TxtQty)
         Me.Panel3.Controls.Add(Me.Label7)
@@ -537,6 +537,7 @@ Partial Class PurchaseMaster_Frm
         Me.TxtMeasureFinal.ReadOnly = True
         Me.TxtMeasureFinal.Size = New System.Drawing.Size(79, 22)
         Me.TxtMeasureFinal.TabIndex = 553
+        Me.TxtMeasureFinal.TabStop = False
         Me.TxtMeasureFinal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'LblMeasureFinal
@@ -549,14 +550,15 @@ Partial Class PurchaseMaster_Frm
         Me.LblMeasureFinal.TabIndex = 554
         Me.LblMeasureFinal.Text = "CBCm"
         '
-        'TextBox1
+        'TxtPrice
         '
-        Me.TextBox1.Location = New System.Drawing.Point(699, 15)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.ReadOnly = True
-        Me.TextBox1.Size = New System.Drawing.Size(107, 22)
-        Me.TextBox1.TabIndex = 551
-        Me.TextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.TxtPrice.Location = New System.Drawing.Point(699, 15)
+        Me.TxtPrice.Name = "TxtPrice"
+        Me.TxtPrice.ReadOnly = True
+        Me.TxtPrice.Size = New System.Drawing.Size(107, 22)
+        Me.TxtPrice.TabIndex = 551
+        Me.TxtPrice.TabStop = False
+        Me.TxtPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label10
         '
@@ -646,13 +648,13 @@ Partial Class PurchaseMaster_Frm
         Me.Label4.Text = "Code :"
         Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'Txt_BuyingPrice
+        'TxtRate
         '
-        Me.Txt_BuyingPrice.Location = New System.Drawing.Point(614, 15)
-        Me.Txt_BuyingPrice.Name = "Txt_BuyingPrice"
-        Me.Txt_BuyingPrice.Size = New System.Drawing.Size(83, 22)
-        Me.Txt_BuyingPrice.TabIndex = 9
-        Me.Txt_BuyingPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.TxtRate.Location = New System.Drawing.Point(614, 15)
+        Me.TxtRate.Name = "TxtRate"
+        Me.TxtRate.Size = New System.Drawing.Size(83, 22)
+        Me.TxtRate.TabIndex = 9
+        Me.TxtRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label16
         '
@@ -945,7 +947,7 @@ Partial Class PurchaseMaster_Frm
     Friend WithEvents TxtBillNo As System.Windows.Forms.TextBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Panel3 As System.Windows.Forms.Panel
-    Friend WithEvents Txt_BuyingPrice As System.Windows.Forms.TextBox
+    Friend WithEvents TxtRate As System.Windows.Forms.TextBox
     Friend WithEvents Label16 As System.Windows.Forms.Label
     Friend WithEvents TxtQty As System.Windows.Forms.TextBox
     Friend WithEvents Label7 As System.Windows.Forms.Label
@@ -979,7 +981,7 @@ Partial Class PurchaseMaster_Frm
     Friend WithEvents TxtMeasure3 As System.Windows.Forms.TextBox
     Friend WithEvents LblMeasure3 As System.Windows.Forms.Label
     Friend WithEvents Panel4 As System.Windows.Forms.Panel
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents TxtPrice As System.Windows.Forms.TextBox
     Friend WithEvents Label10 As System.Windows.Forms.Label
     Friend WithEvents TxtMeasureFinal As System.Windows.Forms.TextBox
     Friend WithEvents LblMeasureFinal As System.Windows.Forms.Label

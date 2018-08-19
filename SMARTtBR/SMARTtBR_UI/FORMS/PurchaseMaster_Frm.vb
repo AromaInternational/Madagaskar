@@ -317,6 +317,8 @@ Public Class PurchaseMaster_Frm
             Txt_ClientID.Text = ""
             TxtClientPhone.Text = ""
             TxtClientName.Text = ""
+            Txt_PrdName.Tag = ""
+            Txt_PrdName.Text = ""
             Dtp_BillDate.Value = Tran_Date
             Dtp_BillDate.Enabled = (User_TypeID = 0)
             Dtp_InvDate.Value = Tran_Date
@@ -388,7 +390,7 @@ Public Class PurchaseMaster_Frm
             TxtMeasureFinal.Visible = True
             TxtMeasureFinal.Text = ""
             TxtQty.Text = "0.000"
-            Txt_BuyingPrice.Text = ""
+            TxtRate.Text = ""
             'Txt_Mrp.Text = "0.00"
             'Txt_LandingCostPerUnit.Text = "0.00"
             'Txt_BatchNo.Text = ""
@@ -466,22 +468,20 @@ Invalid:
                 MessageBox.Show("Invalid Quantity, Please check..", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 TxtQty.Focus()
                 Exit Function
+
+                'If Cmb_Item.SelectedValue > 0 Then
+                '    M_Dr = M_TranTbl.Select("IT_ItemID=" & Cmb_Item.SelectedValue.ToString)
+
+                '    If Val(Txt_BuyingPrice.Text) <= 0 Then
+                '        MessageBox.Show("Invalid Buying Price, Please check..", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                '        Txt_BuyingPrice.Focus()
+                '        Exit Function
+                '    End If
+
+
+            Else
+                ValidateItem = True
             End If
-
-            'If Cmb_Item.SelectedValue > 0 Then
-            '    M_Dr = M_TranTbl.Select("IT_ItemID=" & Cmb_Item.SelectedValue.ToString)
-
-            '    If Val(Txt_BuyingPrice.Text) <= 0 Then
-            '        MessageBox.Show("Invalid Buying Price, Please check..", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-            '        Txt_BuyingPrice.Focus()
-            '        Exit Function
-            '    End If
-
-            '    ValidateItem = True
-            'Else
-            '    MessageBox.Show("Invalid Item, Please check..")
-            '    Cmb_Item.Focus()
-            'End If
         Catch ex As Exception
         End Try
     End Function
@@ -496,8 +496,15 @@ Invalid:
             End If
 
             M_Dr = M_TranTbl.NewRow
-            'M_Dr("Unit_Name") = Txt_Height.Text
-            'M_Dr("Br_Code") = M_OrgBrCode
+            M_Dr("ProductID") = (Txt_PrdCode.Text)
+            M_Dr("Quantity") = Val(TxtQty.Text)
+            M_Dr("Rate") = Val(TxtRate.Text)
+            M_Dr("Price") = Val(TxtPrice.Text)
+            M_Dr("ProductName_Detailed") = Txt_PrdName.Tag
+            M_Dr("DiscountType") = ""
+            M_Dr("DiscountPercent") = 0
+            M_Dr("DiscountAmount") = 0
+            M_Dr("Description") = Txt_Description.Text
             'M_Dr("Pr_Name") = Cmb_Item.Text
             'M_Dr("SOPItem") = ""
             'M_Dr("IT_PCID") = 0
@@ -568,68 +575,45 @@ Invalid:
 
             Dgv_TranDetails.DataSource = M_TranTbl
             Dgv_TranDetails.Columns(Col).Visible = True
+            'Dgv_TranDetails.AutoResizeRow = DataGridViewAutoSizeRowMode.AllCells
             For Col = 0 To Dgv_TranDetails.Columns.Count - 1
                 DgCol = Dgv_TranDetails.Columns(Col)
-                If DgCol.Name = "ProductName" Then
+                If DgCol.Name = "ProductName_Detailed" Then
                     DgCol.HeaderText = "Item Name"
-                    DgCol.Width = 150
+                    DgCol.Width = 280
                     DgCol.DisplayIndex = 1
-                ElseIf DgCol.Name = "Stk_BatchNo" Then
-                    DgCol.HeaderText = "Batch No"
-                    DgCol.Width = 100
-                    DgCol.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
                 ElseIf DgCol.Name = "Quantity" Then
                     DgCol.HeaderText = "Quantity"
-                    DgCol.Width = 60
+                    DgCol.Width = 100
+                    DgCol.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+                    DgCol.DefaultCellStyle.Format = "n3"
+                ElseIf DgCol.Name = "Rate" Then
+                    DgCol.HeaderText = "Rate"
+                    DgCol.Width = 80
+                    DgCol.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+                    DgCol.DefaultCellStyle.Format = "n3"
+                ElseIf DgCol.Name = "Price" Then
+                    DgCol.HeaderText = "Price"
+                    DgCol.Width = 80
                     DgCol.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
                     DgCol.DefaultCellStyle.Format = "n3"
                 ElseIf DgCol.Name = "DiscountAmount" Then
                     DgCol.HeaderText = "Disc Amount"
-                    DgCol.Width = 100
+                    DgCol.Width = 90
                     DgCol.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
                     DgCol.DefaultCellStyle.Format = "n2"
-                ElseIf DgCol.Name = "IT_TaxAmount" Then
-                    DgCol.HeaderText = "Tax Amount"
-                    DgCol.Width = 100
-                    DgCol.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
-                    DgCol.DefaultCellStyle.Format = "n2"
-                ElseIf DgCol.Name = "IT_SP" Then
-                    DgCol.HeaderText = "SP"
-                    DgCol.Width = 100
-                    DgCol.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
-                    DgCol.DefaultCellStyle.Format = "n2"
-                ElseIf DgCol.Name = "Unit_Name" Then
-                    DgCol.HeaderText = "Unit Name"
-                    DgCol.Width = 50
-                ElseIf DgCol.Name = "IT_ValueWOT" Then
-                    DgCol.HeaderText = "Total Amt WOT"
+                ElseIf DgCol.Name = "DiscountType" Then
+                    DgCol.HeaderText = "Discount Type"
                     DgCol.Width = 110
-                    DgCol.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
-                    DgCol.DefaultCellStyle.Format = "n2"
-                ElseIf DgCol.Name = "IT_ValueWT" Then
-                    DgCol.HeaderText = "Total Amt WT"
-                    DgCol.Width = 110
-                    DgCol.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
-                    DgCol.DefaultCellStyle.Format = "n2"
+                ElseIf DgCol.Name = "DiscountPercent" Then
+                    DgCol.HeaderText = "Discount%"
+                    DgCol.Width = 80
                 ElseIf DgCol.Name = "TranSeqNo" Then
                     DgCol.HeaderText = "Sl No"
-                    DgCol.Width = 40
+                    DgCol.Width = 50
                     DgCol.DisplayIndex = 0
                     Dgv_TranDetails.Sort(DgCol, System.ComponentModel.ListSortDirection.Ascending)
                     DgCol.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-                ElseIf DgCol.Name = "Stk_MFDate" Then
-                    DgCol.HeaderText = "MF Date"
-                    DgCol.Width = 110
-                    DgCol.DisplayIndex = 20
-                    DgCol.DefaultCellStyle.Format = "dd/MM/yyyy"
-                ElseIf DgCol.Name = "Stk_EXPDate" Then
-                    DgCol.HeaderText = "EXP Date"
-                    DgCol.Width = 110
-                    DgCol.DisplayIndex = 21
-                    DgCol.DefaultCellStyle.Format = "dd/MM/yyyy"
-                ElseIf DgCol.Name = "Stk_PRate" Then
-                    DgCol.HeaderText = "Buying Rate"
-                    DgCol.Width = 110
                 Else
                     Dgv_TranDetails.Columns(Col).Visible = False
                 End If
@@ -639,7 +623,7 @@ Invalid:
             Dim I As Integer
             For I = 0 To M_TranTbl.Rows.Count - 1
                 M_Dr = M_TranTbl.Rows(I)
-                M_Dr("IT_SlNo") = I + 1
+                M_Dr("TranSeqNo") = I + 1
             Next
 
             Dgv_TranDetails.Refresh()
@@ -732,7 +716,7 @@ Invalid:
 
         Try
             Qty = Val(TxtQty.Text)
-            BP = Val(Txt_BuyingPrice.Text)
+            BP = Val(TxtRate.Text)
             'ProfitPercent = Val(Txt_ProfitPerc.Text)
 
             'If Val(Txt_SP.Text) = 0 Then
@@ -1106,7 +1090,7 @@ Invalid:
         End Try
     End Sub
 
-    Private Sub Txt_BuyingPrice_Validating(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles Txt_BuyingPrice.Validating
+    Private Sub Txt_BuyingPrice_Validating(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles TxtRate.Validating
         'Call CalcItemTot()
     End Sub
 
@@ -1392,6 +1376,8 @@ Invalid:
                 LblMeasureFinal.Text = M_ProductBO.MeasurementFinalText
                 TxtMeasureFinal.Text = ""
             End If
+
+            Txt_PrdName.Tag = M_ProductBO.ProductNameDetailed
 
         Catch ex As Exception
         End Try

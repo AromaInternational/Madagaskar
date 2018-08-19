@@ -9,6 +9,7 @@
     Private M_Measurement2Value As Decimal
     Private M_Measurement3Value As Decimal
     Private M_ProductName As String
+    Private M_ProductNameDetailed As String
     Private M_ProductCategory As String
     Private M_Measurement1Text As String
     Private M_Measurement2Text As String
@@ -25,6 +26,8 @@
     Public Property Measurement2Value() As Decimal        Get            Return M_Measurement2Value        End Get        Set(ByVal value As Decimal)            M_Measurement2Value = value        End Set    End Property
     Public Property Measurement3Value() As Decimal        Get            Return M_Measurement3Value        End Get        Set(ByVal value As Decimal)            M_Measurement3Value = value        End Set    End Property
     Public Property ProductName() As String        Get            Return M_ProductName.Trim()        End Get        Set(ByVal value As String)            M_ProductName = value.Trim()        End Set    End Property
+    Public Property ProductNameDetailed() As String        Get            Return M_ProductNameDetailed.Trim()        End Get        Set(ByVal value As String)            M_ProductNameDetailed = value.Trim()        End Set    End Property
+
     Public Property ProductCategory() As String        Get            Return M_ProductCategory.Trim()        End Get        Set(ByVal value As String)            M_ProductCategory = value.Trim()        End Set    End Property
     Public Property Measurement1Text() As String        Get            Return M_Measurement1Text.Trim()        End Get        Set(ByVal value As String)            M_Measurement1Text = value.Trim()        End Set    End Property
     Public Property Measurement2Text() As String        Get            Return M_Measurement2Text.Trim()        End Get        Set(ByVal value As String)            M_Measurement2Text = value.Trim()        End Set    End Property
