@@ -75,10 +75,12 @@
     <Compile Include="AccountGroupBL.vb" />
     <Compile Include="AccountMasterBL.vb" />
     <Compile Include="AccYearlyClosingBL.vb" />
+    <Compile Include="ClientMasterBL.vb" />
     <Compile Include="CommonBL.vb" />
     <Compile Include="DepartmentBL.vb" />
     <Compile Include="DesignationBL.vb" />
     <Compile Include="ParaCodeBL.vb" />
+    <Compile Include="ProductMasterBL.vb" />
     <Compile Include="ReportsBL.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -95,6 +97,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="TranMasterBL.vb" />
     <Compile Include="UnitMasterBL.vb" />
     <Compile Include="UserMasterBL.vb" />
     <Compile Include="UserPwdChangeBL.vb" />

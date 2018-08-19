@@ -74,10 +74,12 @@
     <Compile Include="AccountGroupDA.vb" />
     <Compile Include="AccountMasterDA.vb" />
     <Compile Include="AccYearlyClosingDA.vb" />
+    <Compile Include="ClientMasterDA.vb" />
     <Compile Include="CommonDA.vb" />
     <Compile Include="DepartmentDA.vb" />
     <Compile Include="DesignationDA.vb" />
     <Compile Include="ParaCodeDA.vb" />
+    <Compile Include="ProductMasterDA.vb" />
     <Compile Include="ReportsDA.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -95,6 +97,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="SearchDA.vb" />
+    <Compile Include="TranMasterDA.vb" />
     <Compile Include="UnitMasterDA.vb" />
     <Compile Include="UserMasterDA.vb" />
     <Compile Include="UserPwdChangeDA.vb" />

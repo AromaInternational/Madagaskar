@@ -78,6 +78,7 @@
     <Compile Include="AccountGroupBO.vb" />
     <Compile Include="AccountMasterBO.vb" />
     <Compile Include="AccYearlyClosingBO.vb" />
+    <Compile Include="ClientMasterBO.vb" />
     <Compile Include="CommonSettingsBO.vb" />
     <Compile Include="DepartmentBO.vb" />
     <Compile Include="DesignationBO.vb" />
@@ -97,6 +98,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="ParaCodeBO.vb" />
+    <Compile Include="ProductMasterBO.vb" />
+    <Compile Include="TranMasterBO.vb" />
     <Compile Include="UnitMasterBO.vb" />
     <Compile Include="UserMasterBO.vb" />
     <Compile Include="UserPwdChangeBO.vb" />

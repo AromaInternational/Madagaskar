@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="6e1f41aa-ab8d-4848-a506-eee0a54014c3" ChangeDateTime="08/13/2018 02:50:47">
+    <Property Name="ElementName" Value="[dbo].[ProductMaster_Tbl].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ProductMaster_Tbl]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ProductID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="28da4a68-50d9-4a55-a56b-5894a7ed7095" ChangeDateTime="08/13/2018 02:51:22">
+    <Property Name="ElementName" Value="[dbo].[ProductMaster_Tbl].[P]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ProductMaster_Tbl]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ProductName" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="4d769e7d-a5cb-42cf-a46c-e49d57f92d0e" ChangeDateTime="08/13/2018 02:55:21">
+    <Property Name="ElementName" Value="[dbo].[ProductMaster_Tbl].[Measurement1_Value]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ProductMaster_Tbl]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Measurement2_Value" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="344d4c14-38b5-4862-9810-2cecca8b7e9a" ChangeDateTime="08/13/2018 02:56:16">
+    <Property Name="ElementName" Value="[dbo].[ProductMaster_Tbl].[Measurement1_Text]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ProductMaster_Tbl]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Measurement2_Text" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="68f45751-855c-49d3-a5dd-e5c7c7986354" ChangeDateTime="08/13/2018 02:57:06">
+    <Property Name="ElementName" Value="[dbo].[ProductMaster_Tbl].[Measurement1_Value]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ProductMaster_Tbl]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Measurement3_Value" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="73f23239-a8df-4a1a-81eb-79168b02bbe4" ChangeDateTime="08/13/2018 03:11:31">
+    <Property Name="ElementName" Value="[dbo].[ProductMaster_Tbl].[MeasurementFinal_Value]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ProductMaster_Tbl]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="MeasurementFinal_Formula" />
+  </Operation>
+</Operations>
