@@ -34,6 +34,7 @@ Public Class PurchaseMaster_Frm
     Public M_SlNo As Integer
     Private M_IMApproverID As Integer
     Private M_IMApprovedTime As String
+    Private M_CurrencyEntryID As Integer = 0
 
     Private Sub PurchaseMaster_Frm_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
         Call SMARTtBR_MDI.Set_DeleteFromMenuListTable(Me.Tag)
@@ -67,230 +68,18 @@ Public Class PurchaseMaster_Frm
     End Sub
 
     Public Sub Fill_Details()
-        Dim M_Product As New DataTable
         Try
 
-            'Call Fill_InvTranMode(Cmb_TranMode)
-            'Call Fill_TaxGroup(Cmb_TaxGroup)
-
-            'M_Product = M_CommonBL.Fill_Product(Cmb_Item, Company_Code, False, "Y", "", "", M_ClientType)
-            'ProductList.AddRange((From This In M_Product.AsEnumerable Select This.Field(Of String)("Pr_Name")).ToArray)
-            'Cmb_Item.DropDownStyle = ComboBoxStyle.DropDown
-            'Cmb_Item.AutoCompleteMode = AutoCompleteMode.SuggestAppend
-            'Cmb_Item.AutoCompleteSource = AutoCompleteSource.CustomSource
-            'Cmb_Item.AutoCompleteCustomSource = ProductList
-
-            'M_CommonBL.Fill_DiscType(CmbDiscQtyType, Company_Code, CommonBL.EnmTrType.Purchase, "QTY")
-            'M_CommonBL.Fill_DiscType(Cmb_DiscOthType, Company_Code, CommonBL.EnmTrType.Purchase, "OTH")
-            'M_CommonBL.Fill_TaxType(CmbTaxType, Company_Code, CommonBL.EnmTrType.Purchase, Cmb_TaxGroup.Text)
-
-            'M_CommonBL.Fill_ReportName(Cmb_PrintType, 2)
-
-            'Call Fill_FormNo(Cmb_FormNo, "P", False)
-            'If Cmb_FormNo.Items.Count > 0 Then Cmb_FormNo.SelectedValue = "8"
-
-            M_TranTbl = M_TranMasterBL.Fill_TranGrid(M_TranID)
-            'M_BillTbl = M_TranMasterBL.Fill_BillMaster(M_TranID)
-            'M_PayTbl = M_TranMasterBL.Fill_PayGrid(M_TranID)
-            'M_InvExpTbl = M_TranMasterBL.Fill_InvExpGrid(M_TranID)
-
-            Call GridBind()
+            Call Fill_TranGrid(M_TranID)
             M_EntryMode = "NEW"
         Catch ex As Exception
         End Try
     End Sub
 
-    Private Sub Cmb_Item_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        Dim M_Product As New DataTable
-        Try
-            If e.KeyCode = Keys.F5 Then
-
-                'M_Product = M_CommonBL.Fill_Product(Cmb_Item, Company_Code, False, "Y", "", "", M_ClientType)
-                'ProductList.AddRange((From This In M_Product.AsEnumerable Select This.Field(Of String)("Pr_Name")).ToArray)
-                'Cmb_Item.DropDownStyle = ComboBoxStyle.DropDown
-                'Cmb_Item.AutoCompleteMode = AutoCompleteMode.SuggestAppend
-                'Cmb_Item.AutoCompleteSource = AutoCompleteSource.CustomSource
-                'Cmb_Item.AutoCompleteCustomSource = ProductList
-                'Cmb_Item.SelectedIndex = -1
-            End If
-        Catch ex As Exception
-        End Try
+    Public Sub Fill_TranGrid(M_TranID As Long)
+        M_TranTbl = M_TranMasterBL.Fill_TranGrid(M_TranID)
+        Call GridBind()
     End Sub
-
-    Private Sub Cmb_Item_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        Dim M_ProductTbl As DataTable
-        Dim M_Dr() As DataRow
-        Dim ProfitPerc As Double
-        Dim M_BatchTbl As DataTable
-        Dim Mrp As Double = 0
-        Dim SP As Double = 0
-        Dim M_BatchExists As Boolean = False
-
-        Try
-            'Pnl_PrchDetails.Visible = False
-            Print("")
-
-            '    If Cmb_Item.Items.Count = 0 Or Cmb_Item.ValueMember.Length = 0 Then Cmb_DiscOthType.Focus() : Exit Sub
-
-            '    If Val(Cmb_Item.SelectedValue) > 0 Then
-            '        M_ProductTbl = Cmb_Item.DataSource
-            '        M_Dr = M_ProductTbl.Select("Pr_ID=" & Cmb_Item.SelectedValue.ToString)
-            '        If UBound(M_Dr) >= 0 Then
-            '            Txt_Height.Text = M_Dr(0)("Unit_Name").ToString
-            '            CmbTaxType.SelectedValue = M_Dr(0)("Pr_PTax").ToString
-            '            CmbTaxType.Tag = M_Dr(0)("Pr_TaxInclusive").ToString
-            '            ProfitPerc = Val(M_Dr(0)("Pr_ProfitPerc").ToString)
-            '            Txt_ProfitPerc.Text = Format(ProfitPerc, "#0.00")
-            '            ExpInDays = Val(M_Dr(0)("Pr_ExpInDays").ToString)
-            '            FRCStatus = (M_Dr(0)("Pr_FRCStatus").ToString = "Y")
-            '            Call CalcExpDate()
-
-            '            M_BatchTbl = M_CommonBL.Fill_BatchDtls(Cmb_Item.SelectedValue.ToString, M_OrgBrCode, Nothing, False, "P", "D")
-            '            If M_BatchTbl.Rows.Count > 0 Then
-            '                M_BatchExists = True
-            '                Mrp = Val(M_BatchTbl.Rows(0)("Stk_Mrp").ToString)
-            '                Txt_Mrp.Text = Format(Mrp, "#0.00")
-            '                Txt_SP.Text = Format(Mrp, "#0.00")
-            '                Txt_BuyingPrice.Text = Format(Val(M_BatchTbl.Rows(0)("Stk_PRate").ToString), "#0.00")
-            '            Else
-            '                M_BatchExists = False
-            '                Txt_Mrp.Text = Format(Mrp, "#0.00")
-            '                Txt_SP.Text = Format(Mrp, "#0.00")
-            '                Txt_BuyingPrice.Text = Format(Mrp, "#0.00")
-            '            End If
-
-            '            If User_TypeID < 2 Then
-            '                Txt_Mrp.TabStop = True
-            '                Txt_Mrp.ReadOnly = False
-            '                Txt_SP.TabStop = True
-            '                Txt_SP.ReadOnly = False
-            '            Else
-            '                If PrchMRPEdit_Allowed Then
-            '                    Txt_Mrp.TabStop = True
-            '                    Txt_Mrp.ReadOnly = False
-            '                    Txt_SP.TabStop = True
-            '                    Txt_SP.ReadOnly = False
-            '                Else
-            '                    If M_BatchExists Then
-            '                        Txt_Mrp.TabStop = (FRCStatus = False)
-            '                        Txt_Mrp.ReadOnly = (FRCStatus = True)
-            '                        Txt_SP.TabStop = (FRCStatus = False)
-            '                        Txt_SP.ReadOnly = (FRCStatus = True)
-            '                    Else
-            '                        Txt_Mrp.TabStop = True
-            '                        Txt_Mrp.ReadOnly = False
-            '                        Txt_SP.TabStop = True
-            '                        Txt_SP.ReadOnly = False
-            '                    End If
-            '                End If
-            '            End If
-            '            Show_PurchaseHistory(Cmb_Item.SelectedValue.ToString)
-            '        End If
-            '        If CmbTaxType.SelectedIndex < 0 Then CmbTaxType.SelectedIndex = 0
-            '    End If
-        Catch ex As Exception
-            MessageBox.Show(ex.Message, Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-    End Sub
-
-    '    Public Sub Show_PurchaseHistory(ByVal ItemID As Integer)
-    '        Dim PurchaseHistTbl As DataTable
-    '        Dim Col As Integer
-    '        Dim DgCol As DataGridViewColumn
-
-    '        Try
-    '            PurchaseHistTbl = M_TranMasterBL.PurchaseHistory(ItemID, M_OrgBrCode)
-    '            Dgd_PrchDetails.DataSource = PurchaseHistTbl
-
-    '            If PurchaseHistTbl.Rows.Count > 0 Then
-    '                Pnl_PrchDetails.Visible = True
-
-    '                For Col = 0 To Dgd_PrchDetails.Columns.Count - 1
-    '                    DgCol = Dgd_PrchDetails.Columns(Col)
-    '                    If DgCol.Name = "Pr_ID" Or DgCol.Name = "Br_Code" Then
-    '                        Dgd_PrchDetails.Columns(Col).Visible = False
-    '                    ElseIf DgCol.Name = "MRP" Or DgCol.Name = "Prch Price" Then
-    '                        DgCol.Width = 100
-    '                        DgCol.DefaultCellStyle.Format = "n2"
-    '                        DgCol.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
-    '                    ElseIf DgCol.Name = "Supplier" Then
-    '                        DgCol.HeaderText = "Supplier"
-    '                        DgCol.Width = 100
-    '                    End If
-
-    '                    If DgCol.ValueType Is GetType(System.Int64) Or DgCol.ValueType Is GetType(System.Int32) Or DgCol.ValueType Is GetType(System.Int16) Then
-    '                        DgCol.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-    '                    ElseIf DgCol.ValueType Is GetType(System.String) Then
-    '                        DgCol.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
-    '                    ElseIf DgCol.ValueType Is GetType(Double) Or DgCol.ValueType Is GetType(System.Decimal) Then
-    '                        DgCol.DefaultCellStyle.Format = "n2"
-    '                        DgCol.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
-    '                    ElseIf DgCol.ValueType Is GetType(Date) Then
-    '                        If UCase(DgCol.Name.ToString).Contains("TIME") Then
-    '                            DgCol.DefaultCellStyle.Format = "MM/dd/yyyy HH:mm:ss"
-    '                        Else
-    '                            DgCol.DefaultCellStyle.Format = "dd/MM/yyyy"
-    '                        End If
-    '                    End If
-    '                Next Col
-
-    '                Dgd_PrchDetails.Refresh()
-    '            Else
-    '                Pnl_PrchDetails.Visible = False
-    '            End If
-    '        Catch ex As Exception
-    '            MessageBox.Show(ex.Message, Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Error)
-    '        End Try
-    '    End Sub
-
-    '    Public Sub CalcExpDate()
-    '        Dim ExpDate As Date
-
-    '        ExpDate = DateAdd(DateInterval.Day, ExpInDays, Dtp_ManufacturingDate.Value)
-    '        Dtp_ExpiryDate.Value = ExpDate
-    '    End Sub
-
-    '    Private Sub CmbDiscQtyType_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
-    '        Try
-    '            Dim DiscPercent As Double = 0
-    '            Dim M_Dr As DataRow
-    '            If CmbDiscQtyType.Items.Count = 0 Or CmbDiscQtyType.ValueMember.Length = 0 Then Exit Sub
-
-    '            If CmbDiscQtyType.SelectedIndex >= 0 Then
-    '                If UBound(CmbDiscQtyType.DataSource.Select("DT_ID='" & CmbDiscQtyType.SelectedValue & "'")) >= 0 Then
-    '                    M_Dr = CmbDiscQtyType.DataSource.Select("DT_ID='" & CmbDiscQtyType.SelectedValue & "'")(0)
-    '                    If M_Dr Is Nothing Then
-    '                        DiscPercent = 0
-    '                    Else
-    '                        DiscPercent = Val(M_Dr("DT_Rate").ToString)
-    '                    End If
-    '                End If
-    '            End If
-    '            TxtDiscQtyPercent.Text = Format(DiscPercent, "#0.00")
-    '            Call CalcItemTot()
-    '        Catch ex As Exception
-
-    '        End Try
-    '    End Sub
-
-    '    Private Sub CmbTaxType_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
-    '        Dim TaxPercent As Double
-    '        Try
-    '            If CmbTaxType.Items.Count = 0 Or CmbTaxType.ValueMember.Length = 0 Then Exit Sub
-
-    '            If CmbTaxType.SelectedIndex >= 0 And CmbTaxType.DisplayMember.Length > 0 Then
-    '                TaxPercent = CDbl(CmbTaxType.Text.Substring(100).ToString)
-    '                TxtTaxPercent.Text = Format(TaxPercent, "#0.00")
-    '            End If
-    '            Call CalcItemTot()
-    '        Catch ex As Exception
-
-    '        End Try
-    '    End Sub
-
-    '    Private Sub CmbTaxGrp_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
-    '        M_CommonBL.Fill_TaxType(CmbTaxType, Company_Code, CommonBL.EnmTrType.Purchase, Cmb_TaxGroup.Text)
-    '    End Sub
 
     Private Sub Clear_Controls()
         Try
@@ -301,41 +90,23 @@ Public Class PurchaseMaster_Frm
             M_CMAccCode = 0
             M_CMCreditEnabled = "N"
             M_IMApproverID = User_ID
-            'M_IMApprovedTime = M_CommonBL.Get_UserTime()
-
-            'If Cmb_TaxGroup.Items.Count > 0 Then Cmb_TaxGroup.SelectedValue = Default_BranchPrchTaxGroup
-            'If Cmb_TranMode.Items.Count > 0 Then Cmb_TranMode.SelectedValue = Default_BranchPrchTranMode
 
             TxtBillNo.Text = ""
             TxtInvNo.Text = ""
-            'Txt_POID.Text = ""
-            'If PurchasePO_Required Then
-            '    Txt_POID.TabStop = True
-            'Else
-            '    Txt_POID.TabStop = False
-            'End If
+
             Txt_ClientID.Text = ""
             TxtClientPhone.Text = ""
             TxtClientName.Text = ""
             Dtp_BillDate.Value = Tran_Date
             Dtp_BillDate.Enabled = (User_TypeID = 0)
             Dtp_InvDate.Value = Tran_Date
-            'If CmbTaxType.Items.Count > 0 Then CmbTaxType.SelectedIndex = 0
-            'If Cmb_FormNo.Items.Count > 0 Then Cmb_FormNo.SelectedValue = "8"
             Call Clear_ItemControls()
 
             M_TranTbl = M_TranTbl.Clone
             M_BillTbl = M_BillTbl.Clone
             M_PayTbl = M_PayTbl.Clone
-            'M_InvExpTbl = M_TranMasterBL.Fill_InvExpGrid(M_TranID)
-
-            'Call GridBind()
-
-            'If Cmb_Item.Items.Count > 0 Then Cmb_Item.SelectedIndex = -1
-            'If Cmb_DiscOthType.Items.Count > 0 Then Cmb_DiscOthType.SelectedValue = Default_BranchPrchDiscType
 
             TxtNarration.Text = ""
-            ' Txt_Mrp.Text = "0.00"
             TxtDiscountOnTotal.Text = "0.00"
             TxtFrieght.Text = "0.00"
 
@@ -353,6 +124,7 @@ Public Class PurchaseMaster_Frm
             'End If
 
             Chk_AutoRoundOff.Checked = True
+            Cmd_Save.Enabled = True
             TxtRoundoff.Text = "0.00"
 
             M_EntryMode = "NEW"
@@ -366,14 +138,40 @@ Public Class PurchaseMaster_Frm
         End Try
     End Sub
 
+    Private Sub Locate_Data(ByVal M_TranMaster As SMARTtBR_BO.TranMasterBO)        If M_TranMaster.TranID = 0 Then            M_EntryMode = "NEW"            Call Clear_Controls()            Exit Sub        End If        With M_TranMaster            M_TranID = .TranID
+            TxtBillNo.Text = .BillNo
+            Dtp_BillDate.Value = .TrDate
+            Txt_ClientID.Text = .ClientID
+
+            Call Load_CustDtls(Val(Txt_ClientID.Text), "")
+
+            TxtShippingAddress.Text = .ShipmentAddress
+            TxtBillingAddress.Text = .BillingAddress
+            Dtp_InvDate.Value = .InvoiceDate
+            TxtInvNo.Text = .InvoiceNumber
+            TxtRoundoff.Text = Format(.RoundOff, "#0.00")
+            TxtGrTot.Text = Format(.GrossAmount, "#0.00")
+            TxtNetAmt.Text = Format(.NetAmount, "#0.00")
+            TxtFrieght.Text = Format(.Frieght, "#0.00")
+            TxtDiscountOnTotal.Text = Format(.DiscountOnTotal, "#0.00")
+            M_CurrencyEntryID = .CurrencyEntryID
+            TxtNarration.Text = .Remarks
+            Chk_AutoRoundOff.Checked = IIf(.AutoRoundOff = "T", True, False)
+            'M_MakerID = .MakerID
+            'M_MakingTime = .MakingTime
+            'M_UpdaterId = .UpdaterId
+            'M_UpdatingTime = .UpdatingTime
+        End With
+
+        Call Fill_TranGrid(M_TranID)
+        Call CalcFinalTotal()
+
+        M_EntryMode = "VIEW"
+    End Sub
+
     Public Sub Clear_ItemControls()
         Try
             Cmd_Add.Enabled = True
-            'Cmb_Item.SelectedIndex = -1
-            'Cmb_Item.Text = ""
-            'If CmbTaxType.Items.Count > 0 Then CmbTaxType.SelectedIndex = 0
-            'If Cmb_DiscOthType.Items.Count > 0 Then CmbDiscQtyType.SelectedIndex = 0
-            'Txt_SP.Text = ""
             Txt_PrdCode.Text = ""
             LblMeasure1.Text = ""
             TxtMeasure1.Text = ""
@@ -387,14 +185,9 @@ Public Class PurchaseMaster_Frm
             Txt_PrdName.Tag = ""
             TxtQty.Text = "0.000"
             TxtRate.Text = "0.00"
-            'Txt_Mrp.Text = "0.00"
-            'Txt_LandingCostPerUnit.Text = "0.00"
-            'Txt_BatchNo.Text = ""
-            'Txt_BatchNo.Tag = ""
             Txt_Description.Text = ""
             M_SlNo = 0
-            'Pnl_PrchDetails.Visible = False
-            'Call CalcItemTot()
+            Call CalcItemTot()
         Catch ex As Exception
         End Try
     End Sub
@@ -439,8 +232,8 @@ Public Class PurchaseMaster_Frm
                 GoTo Invalid
             End If
 
-            Dim M_TranSw As New IO.StringWriter
-            M_TranTbl.WriteXml(M_TranSw)
+            'Dim M_TranSw As New IO.StringWriter
+            'M_TranTbl.WriteXml(M_TranSw)
             'If Not M_CommonBL.Proc_ValidateStock(M_EntryMode, M_OrgBrCode, M_ClientType, M_TranSw.ToString.Replace("DocumentElement", "NewDataSet"), sMsg) Then
             '    GoTo Invalid
             'End If
@@ -458,7 +251,6 @@ Invalid:
     End Function
 
     Public Function ValidateItem() As Boolean
-        Dim M_Dr() As DataRow
         Try
             If Val(TxtQty.Text) <= 0 Then
                 MessageBox.Show("Invalid Quantity, Please check..", Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
@@ -499,7 +291,7 @@ Invalid:
             M_Dr("DiscountAmount") = 0
             M_Dr("Description") = Txt_Description.Text
             M_Dr("MeasurementFinal_Value") = Val(Replace(TxtMeasureFinal.Text, BasicMeasureUnitShort, ""))
-      
+
             M_TranTbl.Rows.Add(M_Dr)
 
             Call GridBind()
@@ -590,8 +382,8 @@ Invalid:
 
     Public Sub CalcFinalTotal()
         Dim objSum As Object
-        Dim DiscPercent As Double
-        Dim DiscAmt As Double
+        'Dim DiscPercent As Double
+        'Dim DiscAmt As Double
         Dim GrTot As Double
         Dim Roundoff As Double
         Dim NetTot As Double
@@ -677,232 +469,11 @@ Invalid:
 
             TxtMeasureFinal.Text = Format(CBcmItemlTotal, "#0.00") + BasicMeasureUnitShort
 
-            'ProfitPercent = Val(Txt_ProfitPerc.Text)
-
-            'If Val(Txt_SP.Text) = 0 Then
-            '    SP = Val(Txt_Mrp.Text)
-            'Else
-            '    SP = Val(Txt_SP.Text)
-            'End If
-
-            'TaxPercent = Val(TxtTaxPercent.Text)
-            'TotalAmt = Qty * BP
-
-            'DiscPercent = Val(TxtDiscQtyPercent.Text)
-            'DiscAmt = (TotalAmt * DiscPercent / 100)
-            'TxtDiscQtyAmt.Text = Format(DiscAmt, "#0.00")
-
-            'TotalAmt = TotalAmt - Val(TxtDiscQtyAmt.Text)
-
-            'Select Case Cmb_TaxGroup.SelectedValue
-            '    Case "VAT", "CST"
-            '        If TaxPercent > 0 Then
-            '            TaxAmt = (TotalAmt * TaxPercent / 100)
-            '        End If
-            '    Case "GST"
-            '        If TaxPercent > 0 Then
-            '            TaxPercent = TaxPercent / 2
-            '            TaxAmt = (TotalAmt * TaxPercent / 100)
-            '            TaxAmt = System.Math.Round(TaxAmt, 2)
-            '            TaxAmt = TaxAmt * 2
-            '        End If
-            'End Select
-
             TxtPrice.Text = Format(TotalAmt, "#0.00")
-
-            'TxtTaxAmt.Text = Format(TaxAmt, "#0.00")
-
-            'TotWithTax = TotalAmt + TaxAmt
-
-            'LandingCost = IIf(Val(TotWithTax / Qty) > 0, Val(TotWithTax / Qty), 0)
-
-            'Txt_LandingCostPerUnit.Text = Format(LandingCost, "#0.00")
-
-            'TxtItemGrTot.Text = Format(TotWithTax, "#0.00")
-
-            'Txt_SP.Text = Format(SP, "#0.00")
 
         Catch ex As Exception
         End Try
     End Sub
-
-    '    Private Sub Cmb_Item_Validating(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs)
-    '        Call Cmb_Item_SelectedIndexChanged(sender, System.EventArgs.Empty)
-    '        If Cmb_Item.SelectedIndex = -1 Then Me.ActiveControl = Cmb_DiscOthType
-    '    End Sub
-
-    '    Private Sub Cmd_Save_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Cmd_Save.Click, Cmd_Save.KeyDown
-    '        Dim M_InvMaster As New SMARTtBR_BO.InvMasterBO
-
-    '        If ValidateControls() = False Then Exit Sub
-
-    '        If PrchExpEntry_Allow Then
-    '            Dim FrmExp As New InvExpDetails_Frm
-    '            FrmExp.M_InvExpTbl = M_InvExpTbl
-    '            FrmExp.StartPosition = FormStartPosition.CenterParent
-    '            FrmExp.ShowDialog(Me)
-    '            M_InvExpTbl = FrmExp.M_InvExpTbl
-    '            FrmExp = Nothing
-    '        End If
-
-    '        Dim FrmPay As New Payment_Frm
-    '        FrmPay.IMID = M_TranID
-    '        FrmPay.M_CMAccCode = M_CMAccCode
-    '        FrmPay.M_CMCreditEnabled = M_CMCreditEnabled
-    '        FrmPay.OrgBrCode = M_OrgBrCode
-    '        FrmPay.NetTotal = Val(TxtNetAmt.Text)
-    '        FrmPay.M_PayTbl = M_PayTbl
-    '        FrmPay.StartPosition = FormStartPosition.CenterParent
-    '        FrmPay.ShowDialog(Me)
-
-    '        Try
-    '            If FrmPay.M_Ok = False Then Exit Sub
-
-    '            M_PayTbl = FrmPay.M_PayTbl
-    '            FrmPay = Nothing
-
-    '            If M_PayTbl Is Nothing Then
-    '                MessageBox.Show("Invalid Pay Details..... Please Check")
-    '                Exit Sub
-    '            End If
-
-    '            If M_PayTbl.Rows.Count = 0 Then
-    '                MessageBox.Show("Invalid Pay Details..... Please Check")
-    '                Exit Sub
-    '            End If
-
-    '            Cmd_Save.Enabled = False  ''Disable Save Button
-
-    '            Dim M_PaySw As New IO.StringWriter
-    '            M_PayTbl.WriteXml(M_PaySw)
-
-    '            With M_InvMaster
-    '                .BrCode = M_OrgBrCode
-    '                .IMType = M_ClientType
-    '                .MakerID = User_ID
-    '                If M_EntryMode = "VIEW" Then
-    '                    .UpdaterID = User_ID
-    '                Else
-    '                    .UpdaterID = 0
-    '                End If
-    '                .IMDate = Dtp_BillDate.Value
-    '                .IMID = M_TranID
-    '                .IMNo = Val(TxtBillNo.Text)
-    '                .IMIssueID = 0
-    '                .IMModalID = 0
-    '                .IMClientID = Val(Txt_ClientID.Text)
-    '                .IMNarration = TxtNarration.Text
-    '                .IMApproverID = M_IMApproverID
-    '                .IMApprovedTime = M_IMApprovedTime
-    '                .ActiveStatus = M_ActiveStatus
-    '                .ClientName = TxtClientName.Text
-    '                .ClientPhone = TxtClientPhone.Text
-    '                .IMPOID = Val(Txt_POID.Text)
-    '            End With
-
-
-    '            Dim M_TranMasterBL As New TranMasterBL
-    '            Dim M_TranSw As New IO.StringWriter
-    '            M_TranTbl.WriteXml(M_TranSw)
-
-    '            Dim M_Dr As DataRow
-    '            M_BillTbl.Clear()
-    '            M_Dr = M_BillTbl.NewRow
-
-    '            M_Dr("Br_Code") = M_OrgBrCode
-    '            M_Dr("IM_ID") = M_TranID
-    '            M_Dr("BL_Type") = M_ClientType
-    '            M_Dr("BL_TranMode") = Cmb_TranMode.SelectedValue
-    '            M_Dr("BL_TaxGroup") = Cmb_TaxGroup.SelectedValue
-    '            M_Dr("BL_FormNo") = Cmb_FormNo.SelectedValue
-    '            M_Dr("BL_No") = Val(TxtBillNo.Text)
-    '            M_Dr("BL_Date") = Dtp_BillDate.Value.Date
-    '            M_Dr("BL_DocNo") = TxtInvNo.Text.Trim
-    '            M_Dr("BL_DocDate") = Dtp_InvDate.Value.Date
-    '            M_Dr("BL_ClientID") = Val(Txt_ClientID.Text)
-    '            M_Dr("BL_CounterNo") = 0
-    '            M_Dr("BL_SmanID") = 0
-    '            M_Dr("BL_Total") = Val(TxtGrTotWOT.Text)
-    '            M_Dr("BL_DiscType") = Val(Cmb_DiscOthType.SelectedValue)
-    '            M_Dr("BL_DiscPer") = Val(TxtDiscOthPercent.Text)
-    '            M_Dr("BL_DiscAmount") = Val(Txt_TotalValue.Text)
-    '            M_Dr("BL_PointDiscAmt") = 0
-    '            M_Dr("BL_PointAmt") = 0
-    '            M_Dr("BL_CpnDiscAmt") = 0
-    '            M_Dr("BL_MiscAmt") = 0
-    '            M_Dr("BL_PackCharge") = Val(TxtPkgAmt.Text)
-    '            M_Dr("BL_HandlingCharge") = Val(TxtHandlingAmt.Text)
-    '            M_Dr("BL_PostageCharge") = 0
-    '            M_Dr("BL_FreightType") = ""
-    '            M_Dr("BL_Freight") = 0
-    '            M_Dr("BL_MiscAdd") = 0
-    '            M_Dr("BL_MiscLess") = 0
-    '            M_Dr("BL_GrandTotal") = Val(TxtGrTot.Text)
-    '            M_Dr("BL_AutoRoundOff") = IIf(Chk_AutoRoundOff.Checked = True, "Y", "N")
-    '            M_Dr("BL_RoundOff") = Val(TxtRoundoff.Text)
-    '            M_Dr("BL_NetAmount") = Val(TxtNetAmt.Text)
-    '            M_Dr("BL_AdvAmount") = 0
-    '            M_Dr("BL_PDCAmount") = 0
-    '            M_Dr("BL_PaidAmount") = 0
-    '            M_Dr("BL_PayMode") = ""
-    '            M_Dr("BL_WSRT") = ""
-    '            M_Dr("BL_Narration") = TxtNarration.Text
-    '            M_Dr("BL_AccId") = 0
-    '            M_Dr("Active_Status") = M_ActiveStatus
-    '            M_Dr("Maker_ID") = User_ID
-    '            M_Dr("Making_Time") = "01/01/1900"
-    '            M_Dr("Updater_ID") = 0
-    '            M_Dr("Updating_Time") = "01/01/1900"
-
-    '            If M_EntryMode = "VIEW" Then
-    '                If M_BillTbl.Rows.Count > 0 Then
-    '                    For Each M_DataRow As DataRow In M_BillTbl.[Select]("IM_ID=" & M_TranID.ToString)
-    '                        M_Dr("BL_PDCAmount") = M_DataRow("BL_PDCAmount")
-    '                        M_Dr("BL_PaidAmount") = M_DataRow("BL_PaidAmount")
-    '                        M_Dr("BL_PayMode") = M_DataRow("BL_PayMode")
-    '                        M_Dr("BL_WSRT") = M_DataRow("BL_WSRT")
-    '                        M_Dr("BL_Narration") = TxtNarration.Text
-    '                        M_Dr("BL_AccId") = M_DataRow("BL_AccId")
-    '                        M_Dr("Maker_ID") = User_ID
-    '                        M_Dr("Making_Time") = M_DataRow("Making_Time")
-    '                    Next
-    '                End If
-    '                M_BillTbl.Rows.Clear()
-    '            End If
-
-    '            M_BillTbl.Rows.Add(M_Dr)
-
-    '            Dim M_BillMasterSw As New IO.StringWriter
-    '            M_BillTbl.WriteXml(M_BillMasterSw)
-
-    '            Dim M_InvExpSw As New IO.StringWriter
-    '            M_InvExpTbl.WriteXml(M_InvExpSw)
-
-    '            M_TranID = M_TranMasterBL.Save_Data(M_InvMaster, M_EntryMode, Me.Tag, M_TranSw.ToString.Replace("DocumentElement", "NewDataSet"), M_BillMasterSw.ToString.Replace("DocumentElement", "NewDataSet"), M_PaySw.ToString.Replace("DocumentElement", "NewDataSet"), "", "", M_InvExpSw.ToString.Replace("DocumentElement", "NewDataSet"))
-    '            If M_TranID > 0 Then
-
-    '                If MsgBox("Data Saved....!!!! Do You Want To Print.", MsgBoxStyle.YesNo + MsgBoxStyle.Information, "SMART BiZ") = MsgBoxResult.Yes Then
-    '                    Dim M_InvReportsBL As New InvReportsBL
-    '                    Dim M_DataSet As DataSet
-    '                    M_DataSet = M_InvReportsBL.ProcRpt_InvRec(M_OrgBrCode, Cmb_PrintType.SelectedValue, M_TranID, User_ID, Me.Tag)
-    '                    If Cmb_PrintType.Text.ToUpper.Substring(100, 1) = "Y" Then
-    '                        Call PrintContinuous(M_DataSet, User_ID, Me.Tag)
-    '                    Else
-    '                        Call DisplayCrystalReport(M_DataSet, Me.Tag)
-    '                    End If
-    '                End If
-
-    '                Call Clear_Controls()
-    '                Me.ActiveControl = TxtBillNo
-    '            Else
-    '                Cmd_Save.Enabled = True  ''Enable Save Button
-    '            End If
-    '        Catch ex As Exception
-    '            Cmd_Save.Enabled = True  ''Enable Save Button
-    '            FrmPay = Nothing
-    '            MessageBox.Show(ex.Message)
-    '        End Try
-    '    End Sub
 
     Private Sub Cmd_Close_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Cmd_Close.Click
         Me.Close()
@@ -914,82 +485,9 @@ Invalid:
                 Exit Sub
             End If
         End If
-        'Call Clear_Controls()
+        Call Clear_Controls()
         Me.ActiveControl = TxtBillNo
     End Sub
-
-    '    Private Sub Cmb_DiscOthType_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Cmb_DiscOthType.SelectedIndexChanged, TxtHandlingAmt.Validating, TxtPkgAmt.Validating, TxtRoundoff.Validating, Chk_AutoRoundOff.CheckedChanged
-    '        Try
-    '            If Cmb_DiscOthType.Items.Count = 0 Or Cmb_DiscOthType.ValueMember.Length = 0 Then Exit Sub
-
-    '            Dim DiscPercent As Double = 0
-    '            Dim M_Dr As DataRow
-    '            If Cmb_DiscOthType.SelectedIndex >= 0 Then
-    '                If UBound(Cmb_DiscOthType.DataSource.Select("DT_ID='" & Cmb_DiscOthType.SelectedValue & "'")) >= 0 Then
-    '                    M_Dr = Cmb_DiscOthType.DataSource.Select("DT_ID='" & Cmb_DiscOthType.SelectedValue & "'")(0)
-    '                    If M_Dr Is Nothing Then
-    '                        DiscPercent = 0
-    '                    Else
-    '                        DiscPercent = Val(M_Dr("DT_Rate").ToString)
-    '                    End If
-    '                End If
-    '            End If
-    '            TxtDiscOthPercent.Text = Format(DiscPercent, "#0.00")
-    '            Call CalcFinalTotal()
-    '        Catch ex As Exception
-
-    '        End Try
-    '    End Sub
-
-    '    Private Sub Locate_Data(ByVal M_InvMasterBO As SMARTtBR_BO.InvMasterBO)
-    '        Try
-    '            If M_InvMasterBO.IMID = 0 Then
-    '                M_EntryMode = "NEW"
-    '                Call Clear_Controls()
-    '                Exit Sub
-    '            End If
-    '            With M_InvMasterBO
-
-    '                M_OrgBrCode = .BrCode
-    '                M_TranID = .IMID
-    '                TxtBillNo.Text = .IMNo
-    '                M_ActiveStatus = .ActiveStatus
-    '                TxtClientPhone.Text = ""
-    '                Txt_ClientID.Text = .IMClientID
-    '                Dtp_BillDate.Value = .IMDate
-    '                Txt_POID.Text = .IMPOID
-    '                TxtNarration.Text = .IMNarration
-    '            End With
-
-    '            Call Load_CustDtls(Val(Txt_ClientID.Text), "")
-
-    '            M_TranTbl = M_TranMasterBL.Fill_InvTranGrid(M_TranID)
-    '            M_BillTbl = M_TranMasterBL.Fill_BillMaster(M_TranID)
-    '            M_PayTbl = M_TranMasterBL.Fill_PayGrid(M_TranID)
-    '            M_InvExpTbl = M_TranMasterBL.Fill_InvExpGrid(M_TranID)
-
-    '            If M_BillTbl.Rows.Count > 0 Then
-    '                Cmb_TranMode.SelectedValue = M_BillTbl.Rows(0).Item("BL_TranMode")
-    '                Cmb_TaxGroup.SelectedValue = M_BillTbl.Rows(0).Item("BL_TaxGroup")
-    '                Cmb_FormNo.SelectedValue = M_BillTbl.Rows(0).Item("BL_FormNo")
-    '                Dtp_InvDate.Value = M_BillTbl.Rows(0).Item("BL_DocDate")
-    '                TxtInvNo.Text = M_BillTbl.Rows(0).Item("BL_DocNo")
-    '                Cmb_DiscOthType.SelectedValue = M_BillTbl.Rows(0).Item("BL_DiscType")
-    '                TxtDiscOthPercent.Text = M_BillTbl.Rows(0).Item("BL_DiscPer")
-    '                Txt_TotalValue.Text = M_BillTbl.Rows(0).Item("BL_DiscAmount")
-    '                TxtPkgAmt.Text = M_BillTbl.Rows(0).Item("BL_PackCharge")
-    '                TxtHandlingAmt.Text = M_BillTbl.Rows(0).Item("BL_HandlingCharge")
-    '                Chk_AutoRoundOff.Checked = (M_BillTbl.Rows(0).Item("BL_AutoRoundOff") = "Y")
-    '                TxtRoundoff.Text = M_BillTbl.Rows(0).Item("BL_RoundOff")
-    '            End If
-
-    '            Call GridBind()
-    '            Call CalcFinalTotal()
-
-    '            M_EntryMode = "VIEW"
-    '        Catch ex As Exception
-    '        End Try
-    '    End Sub
 
     Private Sub TxtBillNo_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles TxtBillNo.KeyDown
         If e.KeyCode = Keys.F3 Then
@@ -1009,11 +507,11 @@ Invalid:
             M_EntryMode = "NEW"
         Else
             Try
-                '      Dim M_InvMasterBO As New SMARTtBR_BO.InvMasterBO
-                '      Dim M_TranMasterBL As New TranMasterBL
-                '      M_InvMasterBO = M_TranMasterBL.Locate_Data(M_OrgBrCode, M_ClientType, TxtBillNo.Text)
-                ''      Call Locate_Data(M_InvMasterBO)
-                '      M_TranMasterBL = Nothing
+                Dim M_TranMasterBO As New SMARTtBR_BO.TranMasterBO
+                Dim M_TranMasterBL As New TranMasterBL
+                M_TranMasterBO = M_TranMasterBL.Locate_Data(Val(TxtBillNo.Text))
+                Call Locate_Data(M_TranMasterBO)
+                M_TranMasterBL = Nothing
             Catch ex As Exception
 
             End Try
@@ -1219,8 +717,8 @@ Invalid:
 
 
     Private Function Validate_StockStatus() As Boolean
-        Dim M_BatchTbl As DataTable
-        Dim M_Dr As DataRow
+        'Dim M_BatchTbl As DataTable
+        'Dim M_Dr As DataRow
         Dim PrQty As Double = 0
         Dim CurQty As Double = 0
         Dim Result As Boolean = False
@@ -1245,8 +743,8 @@ Invalid:
     End Sub
 
     Private Function Validate_PurchaseOrder() As Boolean
-        Dim M_DataSet As System.Data.DataSet
-        Dim M_Dt As DataTable
+        'Dim M_DataSet As System.Data.DataSet
+        'Dim M_Dt As DataTable
         'Dim M_PurchaseOrder As New PurchaseOrderMasterBL
         'Dim bResult As Boolean = False
         'Try
@@ -1268,6 +766,7 @@ Invalid:
         '    MessageBox.Show(ex.Message, "SMARTtBR", MessageBoxButtons.OK)
         '    Return bResult
         'End Try
+        Validate_PurchaseOrder = True
     End Function
 
     Private Sub Txt_PrdCode_KeyDown(sender As Object, e As KeyEventArgs) Handles Txt_PrdCode.KeyDown
@@ -1338,9 +837,46 @@ Invalid:
         CalcFinalTotal()
     End Sub
 
-    Private Sub TxtRoundoff_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs)
+    Private Sub TxtRoundoff_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles TxtRoundoff.Validating
         CalcFinalTotal()
     End Sub
+
+    Private Sub Cmd_Save_Click(sender As Object, e As EventArgs) Handles Cmd_Save.Click
+        Dim M_TranMaster As New SMARTtBR_BO.TranMasterBO
+        Dim MasterBL As New TranMasterBL
+
+        If ValidateControls() = False Then Exit Sub
+
+        Try
+            Cmd_Save.Enabled = False  ''Disable Save Button
+
+            With M_TranMaster
+                .TranID = Val(TxtBillNo.Text)
+                .BillNo = Val(TxtBillNo.Text)
+                .TrDate = Dtp_BillDate.Value
+                .ClientID = Val(Txt_ClientID.Text)
+                .ShipmentAddress = TxtShippingAddress.Text
+                .BillingAddress = TxtBillingAddress.Text
+                .InvoiceDate = Dtp_InvDate.Value
+                .InvoiceNumber = TxtInvNo.Text
+                .RoundOff = Val(TxtRoundoff.Text)
+                .GrossAmount = Val(TxtGrTot.Text)
+                .NetAmount = Val(TxtNetAmt.Text)
+                .Frieght = Val(TxtFrieght.Text)
+                .DiscountOnTotal = Val(TxtDiscountOnTotal.Text)
+                .CurrencyEntryID = M_CurrencyEntryID
+                .Remarks = TxtNarration.Text
+                .AutoRoundOff = Chk_AutoRoundOff.Checked
+                .MakerID = User_ID
+                .UpdaterId = IIf(M_EntryMode = "NEW", 0, User_ID)
+            End With            Dim M_TranSw As New IO.StringWriter
+            M_TranTbl.WriteXml(M_TranSw)            M_TranID = M_TranMasterBL.Save_Data(M_TranMaster, M_EntryMode, Me.Tag, M_TranSw.ToString.Replace("DocumentElement", "NewDataSet"))            If M_TranID > 0 Then                MessageBox.Show("Data Saved... ID : " & M_TranID, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)                Call Clear_Controls()                Call Fill_Details()                M_TranMasterBL = Nothing                TxtBillNo.Focus()            End If
+        Catch ex As Exception
+            Cmd_Save.Enabled = True  ''Enable Save Button
+            MessageBox.Show(ex.Message)
+        End Try
+    End Sub
+
 End Class
 
 

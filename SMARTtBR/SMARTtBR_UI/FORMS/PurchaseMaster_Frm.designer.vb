@@ -22,7 +22,7 @@ Partial Class PurchaseMaster_Frm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(PurchaseMaster_Frm))
         Me.Dgv_TranDetails = New System.Windows.Forms.DataGridView()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -91,6 +91,7 @@ Partial Class PurchaseMaster_Frm
         Me.Txt_TotalQty = New System.Windows.Forms.TextBox()
         Me.Panel7 = New System.Windows.Forms.Panel()
         Me.Chk_AutoRoundOff = New System.Windows.Forms.CheckBox()
+        Me.TxtRoundoff = New System.Windows.Forms.TextBox()
         Me.Txt_Description = New System.Windows.Forms.TextBox()
         Me.Label47 = New System.Windows.Forms.Label()
         Me.Panel4 = New System.Windows.Forms.Panel()
@@ -115,14 +116,14 @@ Partial Class PurchaseMaster_Frm
         Me.Dgv_TranDetails.AllowUserToAddRows = False
         Me.Dgv_TranDetails.AllowUserToDeleteRows = False
         Me.Dgv_TranDetails.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Bisque
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.Desktop
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Dgv_TranDetails.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Bisque
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.Desktop
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Dgv_TranDetails.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.Dgv_TranDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.Dgv_TranDetails.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.Dgv_TranDetails.Location = New System.Drawing.Point(2, 202)
@@ -811,6 +812,7 @@ Partial Class PurchaseMaster_Frm
         Me.Panel7.Controls.Add(Me.Label30)
         Me.Panel7.Controls.Add(Me.TxtFrieght)
         Me.Panel7.Controls.Add(Me.Label29)
+        Me.Panel7.Controls.Add(Me.TxtRoundoff)
         Me.Panel7.Controls.Add(Me.Label31)
         Me.Panel7.Controls.Add(Me.Label33)
         Me.Panel7.Controls.Add(Me.Label34)
@@ -830,6 +832,16 @@ Partial Class PurchaseMaster_Frm
         Me.Chk_AutoRoundOff.TabIndex = 43
         Me.Chk_AutoRoundOff.Text = "Auto Round Off"
         Me.Chk_AutoRoundOff.UseVisualStyleBackColor = True
+        '
+        'TxtRoundoff
+        '
+        Me.TxtRoundoff.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtRoundoff.Location = New System.Drawing.Point(542, 16)
+        Me.TxtRoundoff.Name = "TxtRoundoff"
+        Me.TxtRoundoff.Size = New System.Drawing.Size(164, 21)
+        Me.TxtRoundoff.TabIndex = 43
+        Me.TxtRoundoff.TabStop = False
+        Me.TxtRoundoff.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Txt_Description
         '
@@ -1038,4 +1050,5 @@ Partial Class PurchaseMaster_Frm
     Friend WithEvents TxtShippingAddress As System.Windows.Forms.TextBox
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents TxtBillingAddress As System.Windows.Forms.TextBox
+    Friend WithEvents TxtRoundoff As System.Windows.Forms.TextBox
 End Class

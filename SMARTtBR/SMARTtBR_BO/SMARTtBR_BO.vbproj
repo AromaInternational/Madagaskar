@@ -99,6 +99,7 @@
     </Compile>
     <Compile Include="ParaCodeBO.vb" />
     <Compile Include="ProductMasterBO.vb" />
+    <Compile Include="TranMasterBO.vb" />
     <Compile Include="UnitMasterBO.vb" />
     <Compile Include="UserMasterBO.vb" />
     <Compile Include="UserPwdChangeBO.vb" />
