@@ -63,7 +63,7 @@ If Upper(@Return_Class)='BL'
 Begin
 	Set @Str=''
 	
-	Set @Str='Imports FINMaN_DA'+Char(13)+'Imports FINMaN_BO'+Char(13)+'Imports FINMaN_BL.CommonBL'+Char(13)+'Imports FINMaN_CO.CommonClass'+char(13)
+	Set @Str='Imports SMARTtBR_DA'+Char(13)+'Imports SMARTtBR_BO'+Char(13)+'Imports SMARTtBR_BL.CommonBL'+Char(13)+'Imports SMARTtBR_CO.CommonClass'+char(13)
 	
 	Set @Str=@Str+'Public Class ' + @ClassName + 'BL' +char(13)
 
@@ -103,7 +103,7 @@ End
 If Upper(@Return_Class)='DA'
 Begin
 	Set @Str=''	
-	Set @Str='Imports FINMaN_DAL'+Char(13)+'Imports FINMaN_BO'+Char(13)+'Imports FINMaN_CO'++char(13)
+	Set @Str='Imports SMARTtBR_DAL'+Char(13)+'Imports SMARTtBR_BO'+Char(13)+'Imports SMARTtBR_CO'++char(13)
 	Set @Str=@Str+ 'Public Class ' + @ClassName + 'DA' +char(13)
 	Set @Str=@Str+'Private M_DBConn As Connection'+Char(13)
 	Set @Str=@Str+'Private M_' + @IdCol + ' as ' + @Id_ColType +Char(13)
@@ -194,7 +194,7 @@ If Upper(@Return_Class)='UI'
 Begin
 	
 	Set @Str=''	
-	Set @Str='Imports FINMaN_DAL'+Char(13)+'Imports FINMaN_BO'+Char(13)+'Imports FINMaN_CO'+Char(13)+'Imports FINMaN_BL'+char(13)+'Imports FINMaN_CO.CommonClass'+char(13)+'Imports System.Windows.Forms'+Char(13)+Char(13)
+	Set @Str='Imports SMARTtBR_DAL'+Char(13)+'Imports SMARTtBR_BO'+Char(13)+'Imports SMARTtBR_CO'+Char(13)+'Imports SMARTtBR_BL'+char(13)+'Imports SMARTtBR_CO.CommonClass'+char(13)+'Imports System.Windows.Forms'+Char(13)+Char(13)
 	Set @Str=@Str+'Public Class ' + @ClassName + '_Frm'+Char(13)
 	Print @Str
 
@@ -261,7 +261,7 @@ Begin
 	Print @Str
 
 	Set @Str='Private Sub Cmd_Save_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Cmd_Save.Click' +Char(13)+Char(13)
-	Set @Str=@Str+'Dim '+@VarName+' As New FINMaN_BO.'+@ClassName+'BO'+Char(13)+Char(13)
+	Set @Str=@Str+'Dim '+@VarName+' As New SMARTtBR_BO.'+@ClassName+'BO'+Char(13)+Char(13)
 	
 	Set @Str=@Str+'If ValidateControls()=False Then Exit Function '+Char(13)
 	Set @Str=@Str+'With '+@VarName+Char(13)
@@ -293,7 +293,7 @@ Begin
 	Print @Str
 	Set @Str=''
 	
-	Set @Str='Private Sub Locate_Data(ByVal '+@VarName+' As FINMaN_BO.'+@ClassName+'BO)' +Char(13)+Char(13)		
+	Set @Str='Private Sub Locate_Data(ByVal '+@VarName+' As SMARTtBR_BO.'+@ClassName+'BO)' +Char(13)+Char(13)		
 	Set @Str=@Str+'If '+@VarName+'.'+@IdCol+' = 0 Then'++Char(13)
 	Set @Str=@Str+'M_EntryMode = "NEW"'+Char(13)
 	Set @Str=@Str+'Call Clear_Controls()'+Char(13)
@@ -323,7 +323,7 @@ Begin
 	Set @Str=@Str+'M_EntryMode = "NEW"'+Char(13)
 	Set @Str=@Str+'Else'+Char(13)
 	Set @Str=@Str+'Try'+Char(13)
-	Set @Str=@Str+'Dim '+@VarName+' As New FINMaN_BO.'+@ClassName+'BO'+Char(13)
+	Set @Str=@Str+'Dim '+@VarName+' As New SMARTtBR_BO.'+@ClassName+'BO'+Char(13)
 	Set @Str=@Str+'Dim M_'+@ClassName+'BL As New '+@ClassName+'BL'+Char(13)
 	Set @Str=@Str+@VarName+' = M_'+@ClassName+'BL.Locate_Data(Txt_' + @IdCol +'.Text)'+Char(13)
 	Set @Str=@Str+'Call Locate_Data('+@VarName+')'+Char(13)
