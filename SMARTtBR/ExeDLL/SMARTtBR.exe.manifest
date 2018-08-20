@@ -226,38 +226,38 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SMARTtBR.exe" size="648192">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SMARTtBR.exe" size="695808">
       <assemblyIdentity name="SMARTtBR" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>MCL+Nfl4n8srQMHqLCocygaG8dA=</dsig:DigestValue>
+        <dsig:DigestValue>CfsX4Nzm3qKyecG+lWZ+5EAgsrY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SMARTtBR_BL.dll" size="47616">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SMARTtBR_BL.dll" size="49152">
       <assemblyIdentity name="SMARTtBR_BL" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>h+i3smvu5a4U4r+2FqDAMdD8KDE=</dsig:DigestValue>
+        <dsig:DigestValue>AKWsnxVo5F8yHM1cihh+r1QjXd4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SMARTtBR_BO.dll" size="44032">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SMARTtBR_BO.dll" size="57344">
       <assemblyIdentity name="SMARTtBR_BO" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>iLW04ygUKANSMYcEL5Qz7RHRTvo=</dsig:DigestValue>
+        <dsig:DigestValue>zwRxicVifZreHg9X3LBDI1kB4mU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -269,19 +269,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>5Kl/udhNQi7grMyXIi0JpbjzFxA=</dsig:DigestValue>
+        <dsig:DigestValue>vSQaEGD2z/qwBbXxEJyw0CHuU/I=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SMARTtBR_DA.dll" size="70656">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SMARTtBR_DA.dll" size="83968">
       <assemblyIdentity name="SMARTtBR_DA" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>jFj8eTcr+9H6uVJqXXlo47pf0vI=</dsig:DigestValue>
+        <dsig:DigestValue>5HWG3i/l9uI8JdHtSMLImPi21gU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -293,7 +293,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>tfGAaItb5Rz/IoZYHMo9m+42FSM=</dsig:DigestValue>
+        <dsig:DigestValue>PFacgsUCKEBEnZGLkxb5eDYIqiw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
